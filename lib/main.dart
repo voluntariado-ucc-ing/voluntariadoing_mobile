@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 void main() => runApp(App());
 
@@ -8,7 +9,9 @@ class App extends StatelessWidget {
   Widget build(BuildContext context) => MaterialApp(
     title: 'Voluntariado UCC',
     theme: ThemeData(
-      primarySwatch: Colors.white
+      textTheme: GoogleFonts.nunitoTextTheme(
+        Theme.of(context).textTheme
+      )
     ),
     home: Placeholder(),
   );
