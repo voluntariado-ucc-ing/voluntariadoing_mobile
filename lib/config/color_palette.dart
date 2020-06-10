@@ -6,6 +6,9 @@ abstract class ColorPalette {
   static const primaryBlue = Color(0xFF4954AE);
   static const secondaryBlue = Color(0x804954AE);
   static const red = Color(0xFFE86060);
+  static const grey = Color(0xFF888888);
+  static const darkGrey = Color(0xFF424242);
+  static const darkerGrey = Color(0xFF212121);
 
   // Donation status colors
   static const toBeConfirmed = Color(0xFF888888);
