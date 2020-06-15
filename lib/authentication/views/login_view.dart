@@ -3,6 +3,7 @@ import 'package:voluntariadoing_mobile/common/widgets/no_overscroll_behavior.dar
 import 'package:voluntariadoing_mobile/common/widgets/presentation_logo.dart';
 import 'package:voluntariadoing_mobile/common/widgets/primary_button.dart';
 import 'package:voluntariadoing_mobile/common/widgets/raised_text_input.dart';
+import 'package:voluntariadoing_mobile/common/widgets/secondary_button.dart';
 import 'package:voluntariadoing_mobile/config/color_palette.dart';
 
 class LoginView extends StatefulWidget {
@@ -72,8 +73,11 @@ class _LoginViewState extends State<LoginView> {
           ),
         ),
         Padding(
-          padding: const EdgeInsets.only(top: 50),
-          child: Text('olvidaste tu password secondary button'),
+          padding: const EdgeInsets.only(top: 10),
+          child: SecondaryButton(
+            onTap: () => print('forgot'),
+            text: '¿Olvidó su contraseña?'
+          ),
         ),
       ],
     )
