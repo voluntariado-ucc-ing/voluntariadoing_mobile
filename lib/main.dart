@@ -3,6 +3,8 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:voluntariadoing_mobile/config/app_routes.dart';
 import 'package:voluntariadoing_mobile/config/color_palette.dart';
 
+import 'config/app_routes.dart';
+
 void main() => runApp(App());
 
 class App extends StatelessWidget {

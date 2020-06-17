@@ -6,6 +6,8 @@ import 'package:voluntariadoing_mobile/common/widgets/raised_text_input.dart';
 import 'package:voluntariadoing_mobile/common/widgets/secondary_button.dart';
 import 'package:voluntariadoing_mobile/config/color_palette.dart';
 
+import '../../config/app_routes.dart';
+
 class LoginView extends StatefulWidget {
   
   @override
@@ -68,7 +70,9 @@ class _LoginViewState extends State<LoginView> {
         Padding(
           padding: const EdgeInsets.only(top: 30, left: 40, right: 40),
           child: PrimaryButton(
-            onTap: () => print('ingresar'),
+            onTap: (){
+              Navigator.of(context).pushReplacementNamed(AppRoutes.password);
+            },
             text: 'Ingresar',
           ),
         ),
