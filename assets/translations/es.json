@@ -1,0 +1,11 @@
+{
+    "COMMON": {
+        "DATE_PICKER_HINT": "Seleccionar fecha..."
+    },
+    "AUTHENTICATION": {
+        "LOGIN": "Ingresar",
+        "FORGOT_PASSWORD": "¿Olvidó su contraseña?",
+        "EMAIL_HINT": "Ingrese su email...",
+        "PASSWORD_HINT": "Ingrese su contraseña..."
+    }   
+}

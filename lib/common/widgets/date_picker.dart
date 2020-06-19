@@ -1,14 +1,24 @@
 import 'package:flutter/material.dart';
-import '../../config/color_palette.dart';
+import 'package:easy_localization/easy_localization.dart';
+import 'package:voluntariadoing_mobile/config/color_palette.dart';
+import 'package:voluntariadoing_mobile/config/widget_utils.dart';
 
+typedef OnSelected = void Function(DateTime);
 
 class DatePicker extends StatefulWidget {
 
-  final Function (DateTime) onTap;
+  final DateTime firstDate;
+  final DateTime lastDate;
+  final OnSelected onSelected;
+  final double maxWidth;
+  
   DatePicker({
-    Key key,
-    @required this.onTap,
-    }) : super(key: key);
+    @required this.firstDate,
+    @required this.lastDate,
+    this.onSelected,
+    this.maxWidth = 200,
+    Key key
+  }) : super(key: key);
 
   @override
   _DatePickerState createState() => _DatePickerState();
@@ -16,66 +26,79 @@ class DatePicker extends StatefulWidget {
 
 class _DatePickerState extends State<DatePicker> {
 
-  DateTime selectedDate = DateTime.now();
+  DateTime selectedDate;
+  String displayText;
+  bool hasBeenSelected = false;
 
-  String _text = 'Seleccionar fecha...';
+  @override
+  void initState() {
+    selectedDate = DateTime.now();
+    displayText = 'COMMON.DATE_PICKER_HINT'.tr();
+    super.initState();
+  }
   
   @override
-  Widget build(BuildContext context) {
-    
-    return Container(
-      width: 200,
-      decoration: BoxDecoration(
-        color: Colors.white,
-        borderRadius: BorderRadius.circular(10),
-        boxShadow: [
-          BoxShadow(
-            color: ColorPalette.darkerGrey.withOpacity(.1),
-            blurRadius: 5,
-            offset: Offset(0, 5)
-          )
-        ]
+  Widget build(BuildContext context) => Container(
+    constraints: BoxConstraints(
+      maxWidth: widget.maxWidth
+    ),
+    decoration: BoxDecoration(
+      color: Colors.white,
+      borderRadius: WidgetUtils.borderRadius10,
+      boxShadow: WidgetUtils.boxShadowLight
     ),
     child: InkWell(
-      onTap: () {
-        _selectDate(context);
-      },
+      onTap:_selectDate,
       child: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
         child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          mainAxisAlignment: hasBeenSelected 
+            ? MainAxisAlignment.center
+            : MainAxisAlignment.spaceBetween,
           children: <Widget>[
-            Text( _text,
-            style: Theme.of(context).textTheme.button
-              .copyWith(
-                  color: ColorPalette.grey,
-                  fontWeight: FontWeight.w900,
-                  fontSize: 12
-              )
+            Text(
+              displayText,
+              style: Theme.of(context).textTheme.button
+                .copyWith(
+                  color: hasBeenSelected 
+                    ? ColorPalette.darkGrey
+                    : ColorPalette.grey,
+                  fontWeight: hasBeenSelected 
+                    ? FontWeight.w700
+                    : FontWeight.w500
+                )
             ),
-            Icon( Icons.calendar_today , color: ColorPalette.grey)
+            if (!hasBeenSelected)
+              Padding(
+                padding: const EdgeInsets.only(left: 10),
+                child: Icon(Icons.calendar_today, color: ColorPalette.grey)
+              )
           ],
         )
       ),
     )
   );
-  }
 
-  Future _selectDate(BuildContext context) async {
+  Future<void> _selectDate() async {
+    final DateTime selected = await showDatePicker(
+      context: context,
+      initialDate: selectedDate,
+      firstDate: widget.firstDate,
+      lastDate: widget.lastDate
+    );
 
-    final DateTime picked = await showDatePicker(
-        context: context,
-        initialDate: selectedDate,
-        firstDate: DateTime(2015, 8),
-        lastDate: DateTime(2050));
+    if (selected == null) return;
+    
+    final formattedDate = DateFormat.yMd(context.locale.languageCode).format(selected);
 
-    if (picked != null && picked != selectedDate)
-      setState(() {
-        selectedDate = picked;
-        _text = "${selectedDate.day}-${selectedDate.month}-${selectedDate.year}";
-      });
+    setState(() {
+      selectedDate = selected;
+      displayText = formattedDate;
+      hasBeenSelected = true;
+    });
 
-      widget.onTap(selectedDate);
-
+    if (widget.onSelected != null) {
+      widget.onSelected(selected);
+    }
   }
 }

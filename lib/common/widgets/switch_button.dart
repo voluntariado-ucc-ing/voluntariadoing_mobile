@@ -1,18 +1,18 @@
 import 'package:flutter/material.dart';
-import '../../config/color_palette.dart';
+import 'package:voluntariadoing_mobile/config/color_palette.dart';
 
 class SwitchButton extends StatefulWidget {
   final String opt1;
   final String opt2;
-  final Color primaryColor;
+  final Color color;
   final Function(bool) onTap;
 
-  SwitchButton(
-      {Key key,
+  SwitchButton({
       @required this.opt1,
       @required this.opt2,
-      @required this.primaryColor,
-      @required this.onTap})
+      @required this.color,
+      @required this.onTap,
+      Key key})
       : super(key: key);
 
   @override
@@ -54,7 +54,7 @@ class _SwitchButtonState extends State<SwitchButton> {
                   duration: Duration(milliseconds: 250),
                   left: state ? 0 : 125,
                   child: Container(
-                    color: widget.primaryColor,
+                    color: widget.color,
                     height: 60,
                     width: 125,
                   ),
@@ -62,8 +62,8 @@ class _SwitchButtonState extends State<SwitchButton> {
                 Row(
                     mainAxisAlignment: MainAxisAlignment.spaceAround,
                     children: <Widget>[
-                      _text(widget.opt1, state ),
-                      _text(widget.opt2, !state )
+                      _text(widget.opt1, state),
+                      _text(widget.opt2, !state)
                     ],
                   ),
               ],
