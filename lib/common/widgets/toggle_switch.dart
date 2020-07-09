@@ -67,6 +67,7 @@ class _ToggleSwitchState extends State<ToggleSwitch>
   }
 
   Widget _buildItem(BuildContext ctx, int index) => InkWell(
+    borderRadius: WidgetUtils.borderRadius10,
     onTap: () => _handleOnTap(index),
     child: AnimatedContainer(
       duration: _animationDuration,
