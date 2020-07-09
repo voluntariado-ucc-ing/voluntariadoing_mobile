@@ -1,18 +1,36 @@
 import 'package:flutter/material.dart';
+import 'package:voluntariadoing_mobile/common/widgets/above_text.dart';
 import 'package:voluntariadoing_mobile/common/widgets/date_picker.dart';
+import 'package:voluntariadoing_mobile/common/widgets/raised_text_input.dart';
+import 'package:voluntariadoing_mobile/common/widgets/slide_box.dart';
 import 'package:voluntariadoing_mobile/common/widgets/switch_button.dart';
 import 'package:voluntariadoing_mobile/common/widgets/toggle_switch.dart';
 import 'package:voluntariadoing_mobile/config/color_palette.dart';
 
 
-class NewPasswordView extends StatelessWidget {
+class NewPasswordView extends StatefulWidget {
+
+
   const NewPasswordView({Key key}) : super(key: key);
+
+  @override
+  _NewPasswordViewState createState() => _NewPasswordViewState();
+}
+
+class _NewPasswordViewState extends State<NewPasswordView> {
+
+  final TextEditingController _controller = TextEditingController();
+  final ScrollController _muchoTextController = ScrollController();
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Container(
-        child: Column(
+      appBar: AppBar(
+        title: Text('Prueba de Widgets'),
+      ),
+      body: ListView(
+        children: <Widget>[
+          Column(
           children: <Widget>[
             SizedBox(height: 100),
             Center(
@@ -30,13 +48,33 @@ class NewPasswordView extends StatelessWidget {
               inactiveColor: Colors.white,
               labels: ['Estudiante', 'Egresado', 'Profesor']
             ),
-            SizedBox(height: 100),
-            DatePicker(
-              firstDate: DateTime.now().subtract(Duration(days: 365)),
-              lastDate: DateTime.now().add(Duration(days: 365)),
+            SizedBox(height: 50),
+            AboveText(
+              text: 'FECHA',
+              alignment: Alignment.bottomCenter,
+              child: DatePicker(
+                firstDate: DateTime.now().subtract(Duration(days: 365)),
+                lastDate: DateTime.now().add(Duration(days: 365)),
+              ),
             ),
+            SizedBox(height: 50,),
+            Padding(
+              padding: const EdgeInsets.symmetric(vertical: 20 , horizontal: 20),
+              child: AboveText(
+                text: 'MUCHO TEXTO',
+                child: RaisedTextInput(
+                  controller: _controller,
+                  hintText: 'Hola nena',
+                  expanded: true,
+                  scrollController: _muchoTextController,
+                  ),
+              ),
+            ),
+            SizedBox(height: 50),
+            SlideBox(),
           ],
         ),
+        ]
       ),
     );
   }

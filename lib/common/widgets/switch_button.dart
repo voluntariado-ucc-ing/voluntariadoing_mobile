@@ -51,7 +51,8 @@ class _SwitchButtonState extends State<SwitchButton> {
               overflow: Overflow.clip,
               children: <Widget>[
                 AnimatedPositioned(
-                  duration: Duration(milliseconds: 250),
+                  duration: Duration(milliseconds: 50),
+                  curve: Curves.easeIn,
                   left: state ? 0 : 125,
                   child: Container(
                     color: widget.color,

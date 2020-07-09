@@ -31,5 +31,6 @@ flutter:
 
   assets:
     - assets/images/splash/illustration.svg
+    - assets/images/donationState/
     - assets/translations/
     - fonts/
