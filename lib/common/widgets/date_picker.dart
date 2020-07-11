@@ -45,7 +45,7 @@ class _DatePickerState extends State<DatePicker> {
     decoration: BoxDecoration(
       color: Colors.white,
       borderRadius: WidgetUtils.borderRadius10,
-      boxShadow: WidgetUtils.boxShadowLight
+      boxShadow: WidgetUtils.boxShadowLighter
     ),
     child: InkWell(
       onTap:_selectDate,

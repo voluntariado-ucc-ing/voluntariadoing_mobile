@@ -51,7 +51,7 @@ class _ToggleSwitchState extends State<ToggleSwitch>
       ),
       decoration: BoxDecoration(
         borderRadius: WidgetUtils.borderRadius10,
-        boxShadow: WidgetUtils.boxShadowLight,
+        boxShadow: WidgetUtils.boxShadowLighter,
         //color: widget.inactiveColor,
       ),
       child: ClipRRect(

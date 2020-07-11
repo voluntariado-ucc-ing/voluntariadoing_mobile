@@ -31,6 +31,9 @@ flutter:
 
   assets:
     - assets/images/splash/illustration.svg
-    - assets/images/donationState/
+    - assets/images/donations/to_be_confirmed.svg
+    - assets/images/donations/to_be_retrieved.svg
+    - assets/images/donations/retrieved.svg
+    - assets/images/donations/rejected.svg
     - assets/translations/
     - fonts/

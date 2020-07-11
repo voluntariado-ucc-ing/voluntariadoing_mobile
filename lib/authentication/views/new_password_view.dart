@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:voluntariadoing_mobile/common/widgets/above_text.dart';
+import 'package:voluntariadoing_mobile/common/widgets/labeled.dart';
 import 'package:voluntariadoing_mobile/common/widgets/date_picker.dart';
 import 'package:voluntariadoing_mobile/common/widgets/dropdown.dart';
 import 'package:voluntariadoing_mobile/common/widgets/raised_text_input.dart';
@@ -21,7 +21,6 @@ class NewPasswordView extends StatefulWidget {
 class _NewPasswordViewState extends State<NewPasswordView> {
 
   final TextEditingController _controller = TextEditingController();
-  final ScrollController _muchoTextController = ScrollController();
 
   @override
   Widget build(BuildContext context) {
@@ -50,7 +49,7 @@ class _NewPasswordViewState extends State<NewPasswordView> {
               labels: ['Estudiante', 'Egresado', 'Profesor']
             ),
             SizedBox(height: 50),
-            AboveText(
+            Labeled(
               text: 'FECHA',
               alignment: Alignment.bottomCenter,
               child: DatePicker(
@@ -68,13 +67,12 @@ class _NewPasswordViewState extends State<NewPasswordView> {
             SizedBox(height: 50,),
             Padding(
               padding: const EdgeInsets.symmetric(vertical: 20 , horizontal: 20),
-              child: AboveText(
+              child: Labeled(
                 text: 'MUCHO TEXTO',
                 child: RaisedTextInput(
                   controller: _controller,
                   hintText: 'Hola nena',
                   expanded: true,
-                  scrollController: _muchoTextController,
                   ),
               ),
             ),

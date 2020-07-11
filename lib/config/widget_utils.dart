@@ -15,4 +15,12 @@ abstract class WidgetUtils {
     )
   ];
 
+  static final boxShadowLighter = [
+    BoxShadow(
+      color: ColorPalette.darkerGrey.withOpacity(.1),
+      blurRadius: 5,
+      offset: Offset(0, 5)
+    )
+  ];
+
 }
