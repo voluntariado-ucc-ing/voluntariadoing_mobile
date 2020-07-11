@@ -1,6 +1,7 @@
 {
     "COMMON": {
-        "DATE_PICKER_HINT": "Seleccionar fecha..."
+        "DATE_PICKER_HINT": "Seleccionar fecha...",
+        "DROPDOWN_HINT": "Seleccionar ..."
     },
     "AUTHENTICATION": {
         "LOGIN": "Ingresar",

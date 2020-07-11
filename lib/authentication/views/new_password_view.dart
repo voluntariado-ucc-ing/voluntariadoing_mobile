@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:voluntariadoing_mobile/common/widgets/above_text.dart';
 import 'package:voluntariadoing_mobile/common/widgets/date_picker.dart';
+import 'package:voluntariadoing_mobile/common/widgets/dropdown.dart';
 import 'package:voluntariadoing_mobile/common/widgets/raised_text_input.dart';
 import 'package:voluntariadoing_mobile/common/widgets/slide_box.dart';
 import 'package:voluntariadoing_mobile/common/widgets/switch_button.dart';
@@ -57,6 +58,13 @@ class _NewPasswordViewState extends State<NewPasswordView> {
                 lastDate: DateTime.now().add(Duration(days: 365)),
               ),
             ),
+            SizedBox(height: 50,),
+            Padding(
+            padding: const EdgeInsets.only(top: 30, left: 40, right: 40),
+            child: Dropdown(
+              items:<String>["a", "b", "c"]
+            ),
+          ),
             SizedBox(height: 50,),
             Padding(
               padding: const EdgeInsets.symmetric(vertical: 20 , horizontal: 20),
