@@ -1,43 +1,61 @@
 import 'package:flutter/material.dart';
-import 'package:voluntariadoing_mobile/config/color_palette.dart';
+import 'package:voluntariadoing_mobile/config/widget_utils.dart';
 
-class RaisedTextInput extends StatelessWidget {
+class RaisedTextInput extends StatefulWidget {
 
   final String hintText;
+  final bool expanded;
   final bool obscureText;
   final TextEditingController controller;
   final void Function(String) onChanged;
+  
 
   RaisedTextInput({
-    @required this.controller, 
-    this.obscureText = false,
-    this.onChanged, 
+    @required this.controller,
+    this.onChanged,
     this.hintText,
+    this.obscureText = false,
+    this.expanded = false,
   });
 
   @override
+  _RaisedTextInputState createState() => _RaisedTextInputState();
+}
+
+class _RaisedTextInputState extends State<RaisedTextInput> {
+
+  ScrollController _scrollController;
+
+  @override
+  void initState() {
+    if (widget.expanded) {
+      _scrollController = ScrollController();
+    }
+    super.initState();
+  }
+
+  @override
   Widget build(BuildContext context) => Container(
-      decoration: BoxDecoration(
-        color: Colors.white,
-        borderRadius: BorderRadius.circular(10),
-        boxShadow: [
-          BoxShadow(
-            color: ColorPalette.darkerGrey.withOpacity(.1),
-            blurRadius: 5,
-            offset: Offset(0, 5)
-          )
-        ]
+    decoration: BoxDecoration(
+      color: Colors.white,
+      borderRadius: WidgetUtils.borderRadius10,
+      boxShadow: WidgetUtils.boxShadowLighter
     ),
     child: Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+      padding: EdgeInsets.symmetric(
+        horizontal: 20,
+        vertical: 10,
+      ),
       child: TextField(
-        controller: controller,
-        onChanged: onChanged,
-        obscureText: obscureText,
+        controller: widget.controller,
+        onChanged: widget.onChanged,
+        obscureText: widget.obscureText,
+        scrollController: _scrollController,
+        maxLines: widget.expanded ? 5 : 1,
         decoration: InputDecoration.collapsed(
-          hintText: hintText ?? '',
+          hintText: widget.hintText ?? '',
         )
       ),
-    )
+    ),
   );
 }

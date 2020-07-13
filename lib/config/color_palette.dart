@@ -4,9 +4,10 @@ abstract class ColorPalette {
 
   // Theme colors
   static const primaryBlue = Color(0xFF4954AE);
-  static const secondaryBlue = Color(0x804954AE);
+  static const secondaryBlue = Color(0xFF9CA2CF);
   static const red = Color(0xFFE86060);
   static const grey = Color(0xFF888888);
+  static const lightGrey = Color(0xFFDDDDDD);
   static const darkGrey = Color(0xFF424242);
   static const darkerGrey = Color(0xFF212121);
 

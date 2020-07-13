@@ -16,6 +16,9 @@ dependencies:
   provider: ^4.1.2
   flutter_svg: ^0.17.4
   google_fonts: ^1.1.0
+  easy_localization: ^2.3.2
+  intl: ^0.16.1
+  auto_size_text: ^2.1.0
 
 dev_dependencies:
   flutter_test:
@@ -29,4 +32,9 @@ flutter:
 
   assets:
     - assets/images/splash/illustration.svg
+    - assets/images/donations/to_be_confirmed.svg
+    - assets/images/donations/to_be_retrieved.svg
+    - assets/images/donations/retrieved.svg
+    - assets/images/donations/rejected.svg
+    - assets/translations/
     - fonts/
