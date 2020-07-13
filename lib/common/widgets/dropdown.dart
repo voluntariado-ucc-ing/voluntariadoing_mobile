@@ -41,8 +41,8 @@ class _DropdownState extends State<Dropdown> {
           ),
           value: dropdownValue,
           icon: Icon(Icons.arrow_drop_down),
-          iconSize: 24,
           elevation: 16,
+          dropdownColor: Colors.white,
           style: Theme.of(context).textTheme.button,
           onChanged: (String newValue) => setState(() => dropdownValue = newValue),
           items: widget.items.map<DropdownMenuItem<String>>(

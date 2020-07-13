@@ -43,39 +43,43 @@ class _DatePickerState extends State<DatePicker> {
       maxWidth: widget.maxWidth
     ),
     decoration: BoxDecoration(
-      color: Colors.white,
       borderRadius: WidgetUtils.borderRadius10,
       boxShadow: WidgetUtils.boxShadowLighter
     ),
-    child: InkWell(
-      onTap:_selectDate,
-      child: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
-        child: Row(
-          mainAxisAlignment: hasBeenSelected 
-            ? MainAxisAlignment.center
-            : MainAxisAlignment.spaceBetween,
-          children: <Widget>[
-            Text(
-              displayText,
-              style: Theme.of(context).textTheme.button
-                .copyWith(
-                  color: hasBeenSelected 
-                    ? ColorPalette.darkGrey
-                    : ColorPalette.grey,
-                  fontWeight: hasBeenSelected 
-                    ? FontWeight.w700
-                    : FontWeight.w500
+    child: Material(
+      borderRadius: WidgetUtils.borderRadius10,
+      color: Colors.white,
+      child: InkWell(
+        onTap:_selectDate,
+        borderRadius: WidgetUtils.borderRadius10,
+        child: Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+          child: Row(
+            mainAxisAlignment: hasBeenSelected 
+              ? MainAxisAlignment.center
+              : MainAxisAlignment.spaceBetween,
+            children: <Widget>[
+              Text(
+                displayText,
+                style: Theme.of(context).textTheme.button
+                  .copyWith(
+                    color: hasBeenSelected 
+                      ? ColorPalette.darkGrey
+                      : ColorPalette.grey,
+                    fontWeight: hasBeenSelected 
+                      ? FontWeight.w700
+                      : FontWeight.w500
+                  )
+              ),
+              if (!hasBeenSelected)
+                Padding(
+                  padding: const EdgeInsets.only(left: 10),
+                  child: Icon(Icons.calendar_today, color: ColorPalette.grey)
                 )
-            ),
-            if (!hasBeenSelected)
-              Padding(
-                padding: const EdgeInsets.only(left: 10),
-                child: Icon(Icons.calendar_today, color: ColorPalette.grey)
-              )
-          ],
-        )
-      ),
+            ],
+          )
+        ),
+      )
     )
   );
 

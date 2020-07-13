@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
 import 'package:google_fonts/google_fonts.dart';
 import 'package:easy_localization/easy_localization.dart';
@@ -11,6 +12,15 @@ Future<void> main() async {
 
   WidgetsFlutterBinding.ensureInitialized();
   await SvgAssets.prealoadSvgAssets();
+
+  SystemChrome.setSystemUIOverlayStyle(
+    SystemUiOverlayStyle(
+      statusBarColor: Colors.white.withOpacity(.7),
+      systemNavigationBarColor: Colors.white,
+      statusBarIconBrightness: Brightness.dark,
+      systemNavigationBarIconBrightness: Brightness.dark
+    )
+  );
   
   runApp(
     EasyLocalization(
