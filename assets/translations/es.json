@@ -3,7 +3,9 @@
         "DATE_PICKER_HINT": "Seleccionar fecha...",
         "DROPDOWN_HINT": "Seleccionar ...",
         "CONFIRM": "Confirmar",
-        "CONTINUE": "Continuar"
+        "CONTINUE": "Continuar",
+        "YES": "Si",
+        "NO": "No"
     },
     "AUTHENTICATION": {
         "EMAIL_HINT": "Ingrese su email...",
@@ -22,6 +24,8 @@
         "UPDATE_PASSWORD_TITLE": "Actualizar contraseña",
         "UPDATE_PASSWORD_SUBTITLE": "Por ser tu primera vez ingresando, te recomendamos que elijas una contraseña nueva.",
         "COMPLETE_PROFILE_TITLE": "Completar perfil",
-        "PERSONAL_INFORMATION_SUBTITLE": "Datos personales"
+        "PERSONAL_INFORMATION_SUBTITLE": "Datos personales",
+        "MEDICAL_INFORMATION_SUBTITLE": "Ficha médica",
+        "MEDICAL_INFORMATION_DESCRIPTION": "Los siguientes campos serán utilizados para generar su ficha médica. Tienen carácter jurídico (o algo así)."
     }   
 }

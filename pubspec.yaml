@@ -19,6 +19,7 @@ dependencies:
   easy_localization: ^2.3.2
   intl: ^0.16.1
   auto_size_text: ^2.1.0
+  json_annotation: ^3.0.1
 
 dev_dependencies:
   flutter_test:
@@ -26,6 +27,7 @@ dev_dependencies:
   
   build_runner: ^1.10.0
   mobx_codegen: ^1.1.0
+  json_serializable: ^3.3.0
 
 flutter:
   uses-material-design: true
@@ -36,5 +38,6 @@ flutter:
     - assets/images/donations/to_be_retrieved.svg
     - assets/images/donations/retrieved.svg
     - assets/images/donations/rejected.svg
+    - assets/mock/medical_information.json
     - assets/translations/
     - fonts/
