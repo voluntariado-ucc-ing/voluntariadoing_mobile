@@ -5,6 +5,7 @@ import 'package:voluntariadoing_mobile/common/widgets/no_overscroll_behavior.dar
 import 'package:voluntariadoing_mobile/common/widgets/primary_button.dart';
 import 'package:voluntariadoing_mobile/common/widgets/raised_text_input.dart';
 import 'package:voluntariadoing_mobile/common/widgets/section_title.dart';
+import 'package:voluntariadoing_mobile/config/app_routes.dart';
 
 
 class NewPasswordFirstTimeView extends StatefulWidget {
@@ -59,7 +60,9 @@ class _NewPasswordFirstTimeViewState extends State<NewPasswordFirstTimeView> {
             Padding(
               padding: const EdgeInsets.only(top: 30, left: 50, right: 50),
               child: PrimaryButton(
-                onTap: (){},
+                onTap: (){
+                  Navigator.of(context).pushReplacementNamed(AppRoutes.completeProfile);
+                },
                 text: "COMMON.CONFIRM".tr()
               )
             ),

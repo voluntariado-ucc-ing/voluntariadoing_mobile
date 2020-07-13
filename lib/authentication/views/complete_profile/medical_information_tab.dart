@@ -41,6 +41,13 @@ class _MedicalInformationTabState extends State<MedicalInformationTab> {
             padding: const EdgeInsets.only(top: 15),
             child: MedicalInfoItemEntry(item: item)
           ),
+        Padding(
+          padding: const EdgeInsets.symmetric(vertical: 30, horizontal: 60),
+          child: PrimaryButton(
+            onTap: (){}, 
+            text: 'COMMON.FINISH'.tr()
+          ),
+        )
       ],
     )
   );
