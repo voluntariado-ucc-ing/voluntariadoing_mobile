@@ -16,7 +16,7 @@ class DatePicker extends StatefulWidget {
     @required this.firstDate,
     @required this.lastDate,
     this.onSelected,
-    this.maxWidth = 200,
+    this.maxWidth = 250,
     Key key
   }) : super(key: key);
 

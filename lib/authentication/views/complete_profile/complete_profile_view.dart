@@ -5,6 +5,8 @@ import 'package:voluntariadoing_mobile/authentication/views/complete_profile/per
 import 'package:voluntariadoing_mobile/common/views/stepped_view.dart';
 import 'package:voluntariadoing_mobile/common/widgets/section_title.dart';
 
+import 'contact_details.dart';
+
 class CompleteProfileView extends StatelessWidget {
   
   @override
@@ -17,6 +19,7 @@ class CompleteProfileView extends StatelessWidget {
     ),
     pages: [
       PersonalInformationTab(),
+      ContactDetailsTab(),
       PersonalInformationTab(),
       CareerInformationTab(),
     ],
