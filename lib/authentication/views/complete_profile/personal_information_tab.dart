@@ -3,7 +3,6 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:voluntariadoing_mobile/common/widgets/date_picker.dart';
 import 'package:voluntariadoing_mobile/common/widgets/labeled.dart';
 import 'package:voluntariadoing_mobile/common/widgets/no_overscroll_behavior.dart';
-import 'package:voluntariadoing_mobile/common/widgets/primary_button.dart';
 import 'package:voluntariadoing_mobile/common/widgets/raised_text_input.dart';
 import 'package:voluntariadoing_mobile/common/widgets/section_title.dart';
 

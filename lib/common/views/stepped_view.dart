@@ -21,19 +21,20 @@ class SteppedView extends StatefulWidget {
 
 class _SteppedViewState extends State<SteppedView> {
   
+  final _initialPage = 0;
   PageController _controller;
   ValueNotifier<double> _notifier = ValueNotifier<double>(0);
 
   int get stepsCount => widget.pages.length;
   
   int get currentStep {
-    if (!_controller.hasClients) return null;
+    if (!_controller.hasClients) return _initialPage;
     return _controller?.page?.toInt();
   }
 
   @override
   void initState() {
-    _controller = PageController()
+    _controller = PageController(initialPage: _initialPage)
       ..addListener(_onPageScroll);
     super.initState();
   }
@@ -45,11 +46,17 @@ class _SteppedViewState extends State<SteppedView> {
     }
   }
 
-  void _back() => _controller.previousPage(
-    duration: Duration(milliseconds: 300), curve: Curves.ease);
+  void _back() {
+    if (!_controller.hasClients) return;
+    _controller?.previousPage(
+      duration: Duration(milliseconds: 300), curve: Curves.ease);
+  }
   
-  void _forward() => _controller.nextPage(
-    duration: Duration(milliseconds: 300), curve: Curves.ease);
+  void _forward() {
+    if (!_controller.hasClients) return;
+    _controller?.nextPage(
+      duration: Duration(milliseconds: 300), curve: Curves.ease);
+  }
 
   @override
   Widget build(BuildContext context) => Scaffold(

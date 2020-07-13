@@ -11,7 +11,7 @@ class RaisedTextInput extends StatefulWidget {
   
 
   RaisedTextInput({
-    @required this.controller,
+    this.controller,
     this.onChanged,
     this.hintText,
     this.obscureText = false,

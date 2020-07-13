@@ -1,0 +1,31 @@
+{
+    "items": [
+        {
+            "id": 0,
+            "title": "¿Tiene o tuvo alguna fractura?",
+            "type": "SWITCH",
+            "options": null
+        },
+        {
+            "id": 1,
+            "title": "Tipo sanguíneo",
+            "type": "SELECT",
+            "options": [
+                "A+",
+                "A-",
+                "B+",
+                "B-",
+                "AB+",
+                "AB-",
+                "0+",
+                "0-"
+            ]
+        },
+        {
+            "id": 2,
+            "title": "¿En qué centros de salud puede atenderse?",
+            "type": "TEXT",
+            "options": null
+        }
+    ]
+}
