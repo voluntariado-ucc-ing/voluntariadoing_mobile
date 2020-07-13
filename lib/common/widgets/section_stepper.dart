@@ -13,7 +13,8 @@ class SectionStepper extends AnimatedWidget {
     @required this.width,
     this.color = ColorPalette.primaryBlue,
     ValueNotifier<double> progress
-  }) : super(listenable: progress);
+  }) : assert(stepsCount > 1),
+      super(listenable: progress);
 
   final _unfilledColor = ColorPalette.lightGrey;
 
