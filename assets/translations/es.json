@@ -8,6 +8,7 @@
         "NO": "No"
     },
     "AUTHENTICATION": {
+        "EMAIL": "Email",
         "EMAIL_HINT": "Ingrese su email...",
         "NAME_HINT": "Ingrese su nombre...",
         "LAST_NAME_HINT": "Ingrese su apellido...",
@@ -26,6 +27,19 @@
         "COMPLETE_PROFILE_TITLE": "Completar perfil",
         "PERSONAL_INFORMATION_SUBTITLE": "Datos personales",
         "MEDICAL_INFORMATION_SUBTITLE": "Ficha médica",
-        "MEDICAL_INFORMATION_DESCRIPTION": "Los siguientes campos serán utilizados para generar su ficha médica. Tienen carácter jurídico (o algo así)."
+        "MEDICAL_INFORMATION_DESCRIPTION": "Los siguientes campos serán utilizados para generar su ficha médica. Tienen carácter jurídico (o algo así).",
+        "CONTACT_DETAILS_SUBTITLE": "Datos del contacto",
+        "TELEPHONE": "Telefono",
+        "TELEPHONE_HINT": "Ingrese numero de telefono...",
+        "CITY": "Ciudad",
+        "CITY_HINT": "Ingrese su ciudad...",
+        "STREET": "Calle",
+        "STREET_HINT": "Ingrese el nombre de la calle...",
+        "NUMBER": "Numero",
+        "NUMBER_HINT":"Ingrese altura de la calle...",
+        "POSTAL": "Codigo postal",
+        "POSTAL_HINT": "Ingrese codigo postal...",
+        "OPTIONAL": "Opcional",
+        "OPTIONAL_HINT": "Ingrese cualquier informacion extra de usted..."
     }   
 }
