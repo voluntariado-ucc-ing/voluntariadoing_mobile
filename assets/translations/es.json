@@ -1,0 +1,18 @@
+{
+    "COMMON": {
+        "DATE_PICKER_HINT": "Seleccionar fecha...",
+        "DROPDOWN_HINT": "Seleccionar ...",
+        "CONFIRM": "Confirmar"
+    },
+    "AUTHENTICATION": {
+        "LOGIN": "Ingresar",
+        "FORGOT_PASSWORD": "¿Olvidó su contraseña?",
+        "EMAIL_HINT": "Ingrese su email...",
+        "PASSWORD_HINT": "Ingrese su contraseña...",
+        "CURRENT_PASSWORD": "Contraseña actual",
+        "NEW_PASSWORD": "Contraseña nueva",
+        "NEW_PASSWORD_CONFIRMATION": "Confirmación de contraseña nueva",
+        "UPDATE_PASSWORD_TITLE": "Actualizar contraseña",
+        "UPDATE_PASSWORD_SUBTITLE": "Por ser tu primera vez ingresando, te recomendamos que elijas una contraseña nueva."
+    }   
+}

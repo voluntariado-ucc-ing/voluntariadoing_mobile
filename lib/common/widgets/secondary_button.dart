@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:voluntariadoing_mobile/config/color_palette.dart';
+import 'package:voluntariadoing_mobile/config/widget_utils.dart';
 
 class SecondaryButton extends StatelessWidget {
 
@@ -11,7 +12,7 @@ class SecondaryButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) => FlatButton(
     shape: RoundedRectangleBorder(
-      borderRadius: BorderRadius.circular(50)
+      borderRadius: WidgetUtils.borderRadius20
     ),
     onPressed: onTap, 
     child: Text(

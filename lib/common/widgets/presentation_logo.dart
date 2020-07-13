@@ -1,14 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:google_fonts/google_fonts.dart';
+//import 'package:google_fonts/google_fonts.dart';
 import 'package:voluntariadoing_mobile/config/color_palette.dart';
+import 'package:voluntariadoing_mobile/config/svg_assets.dart';
 
 class PresentationLogo extends StatelessWidget {
   @override
   Widget build(BuildContext context) => Column(
     mainAxisSize: MainAxisSize.min,
     children: [
-      SvgPicture.asset('assets/images/splash/illustration.svg'),
+      SvgPicture.asset(SvgAssets.logo),
       Padding(
         padding: const EdgeInsets.only(top: 10),
         child: Text(
