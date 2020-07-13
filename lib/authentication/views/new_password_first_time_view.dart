@@ -7,19 +7,18 @@ import 'package:voluntariadoing_mobile/common/widgets/raised_text_input.dart';
 import 'package:voluntariadoing_mobile/common/widgets/section_title.dart';
 
 
-class NewPasswordView extends StatefulWidget {
+class NewPasswordFirstTimeView extends StatefulWidget {
 
-  const NewPasswordView({
+  const NewPasswordFirstTimeView({
     Key key,
   }) : super(key: key);
 
   @override
-  _NewPasswordViewState createState() => _NewPasswordViewState();
+  _NewPasswordFirstTimeViewState createState() => _NewPasswordFirstTimeViewState();
 }
 
-class _NewPasswordViewState extends State<NewPasswordView> {
+class _NewPasswordFirstTimeViewState extends State<NewPasswordFirstTimeView> {
 
-  TextEditingController _currentPasswordController = TextEditingController();
   TextEditingController _newPasswordController = TextEditingController();
   TextEditingController _newPasswordConfirmationController = TextEditingController();
 
@@ -35,16 +34,7 @@ class _NewPasswordViewState extends State<NewPasswordView> {
           children: <Widget>[
             SectionTitle(
               title: 'AUTHENTICATION.UPDATE_PASSWORD_TITLE'.tr(),
-            ),
-            Padding(
-              padding: const EdgeInsets.only(top: 15),
-              child: Labeled(
-                label: 'AUTHENTICATION.CURRENT_PASSWORD'.tr(),
-                child: RaisedTextInput(
-                  controller: _currentPasswordController,
-                  hintText: 'AUTHENTICATION.PASSWORD_HINT'.tr(),
-                ),
-              ),
+              description: 'AUTHENTICATION.UPDATE_PASSWORD_SUBTITLE'.tr()
             ),
             Padding(
               padding: const EdgeInsets.only(top: 15),
