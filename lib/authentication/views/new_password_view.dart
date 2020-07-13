@@ -1,18 +1,22 @@
 import 'package:flutter/material.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:voluntariadoing_mobile/common/widgets/labeled.dart';
-import 'package:voluntariadoing_mobile/common/widgets/date_picker.dart';
-import 'package:voluntariadoing_mobile/common/widgets/dropdown.dart';
+import 'package:voluntariadoing_mobile/common/widgets/no_overscroll_behavior.dart';
+import 'package:voluntariadoing_mobile/common/widgets/primary_button.dart';
 import 'package:voluntariadoing_mobile/common/widgets/raised_text_input.dart';
-import 'package:voluntariadoing_mobile/common/widgets/slide_box.dart';
-import 'package:voluntariadoing_mobile/common/widgets/switch_button.dart';
-import 'package:voluntariadoing_mobile/common/widgets/toggle_switch.dart';
-import 'package:voluntariadoing_mobile/config/color_palette.dart';
+import 'package:voluntariadoing_mobile/common/widgets/section_title.dart';
 
 
 class NewPasswordView extends StatefulWidget {
 
+  final bool isFirstTimeLogin;
+  final VoidCallback onConfirm;
 
-  const NewPasswordView({Key key}) : super(key: key);
+  const NewPasswordView({
+    Key key,
+    @required this.onConfirm,
+    this.isFirstTimeLogin = false,
+  }) : super(key: key);
 
   @override
   _NewPasswordViewState createState() => _NewPasswordViewState();
@@ -20,88 +24,69 @@ class NewPasswordView extends StatefulWidget {
 
 class _NewPasswordViewState extends State<NewPasswordView> {
 
-  final TextEditingController _controller = TextEditingController();
+  TextEditingController _currentPasswordController = TextEditingController();
+  TextEditingController _newPasswordController = TextEditingController();
+  TextEditingController _newPasswordConfirmationController = TextEditingController();
 
   @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text('Prueba de Widgets'),
-      ),
-      body: ListView(
-        children: <Widget>[
-          Column(
+  Widget build(BuildContext context) => Scaffold(
+    backgroundColor: Colors.white,
+    body: SafeArea(
+      child: ScrollConfiguration(
+        behavior: NoOverscrollBehavior(), 
+        child: ListView(
+          shrinkWrap: true,
+          padding: const EdgeInsets.symmetric(vertical: 20, horizontal: 30),
           children: <Widget>[
-            SizedBox(height: 100),
-            Center(
-              child: SwitchButton(
-                opt1: "Estudiante",
-                opt2: "Egresado",
-                color: ColorPalette.primaryBlue,
-                onTap: ( index ) {
-                },
-              ),
+            SectionTitle(
+              title: 'AUTHENTICATION.UPDATE_PASSWORD_TITLE'.tr(),
+              description: widget.isFirstTimeLogin 
+                ? 'AUTHENTICATION.UPDATE_PASSWORD_SUBTITLE'.tr()
+                : null,
             ),
-            SizedBox(height: 100),
-            ToggleSwitch(
-              activeColor: ColorPalette.primaryBlue,
-              inactiveColor: Colors.white,
-              labels: ['Estudiante', 'Egresado', 'Profesor']
-            ),
-            SizedBox(height: 50),
-            Labeled(
-              text: 'FECHA',
-              alignment: Alignment.bottomCenter,
-              child: DatePicker(
-                firstDate: DateTime.now().subtract(Duration(days: 365)),
-                lastDate: DateTime.now().add(Duration(days: 365)),
-              ),
-            ),
-            SizedBox(height: 50,),
-            Padding(
-            padding: const EdgeInsets.only(top: 30, left: 40, right: 40),
-            child: Dropdown(
-              items:<String>["a", "b", "c"]
-            ),
-          ),
-            SizedBox(height: 50,),
-            Padding(
-              padding: const EdgeInsets.symmetric(vertical: 20 , horizontal: 20),
-              child: Labeled(
-                text: 'MUCHO TEXTO',
-                child: RaisedTextInput(
-                  controller: _controller,
-                  hintText: 'Hola nena',
-                  expanded: true,
+            if (!widget.isFirstTimeLogin)
+              Padding(
+                padding: const EdgeInsets.only(top: 15),
+                child: Labeled(
+                  label: 'AUTHENTICATION.CURRENT_PASSWORD'.tr(),
+                  child: RaisedTextInput(
+                    controller: _currentPasswordController,
+                    hintText: 'AUTHENTICATION.PASSWORD_HINT'.tr(),
                   ),
+                ),
+              ),
+            Padding(
+              padding: const EdgeInsets.only(top: 15),
+              child: Labeled(
+                label: 'AUTHENTICATION.NEW_PASSWORD'.tr(),
+                child: RaisedTextInput(
+                  controller: _newPasswordController,
+                  hintText: 'AUTHENTICATION.PASSWORD_HINT'.tr(),
+                ),
               ),
             ),
-            SizedBox(height: 50),
-            SlideBox(),
-          ],
+            Padding(
+              padding: const EdgeInsets.only(top: 15),
+              child: Labeled(
+                label: 'AUTHENTICATION.NEW_PASSWORD_CONFIRMATION'.tr(),
+                child: RaisedTextInput(
+                  controller: _newPasswordConfirmationController,
+                  hintText: 'AUTHENTICATION.PASSWORD_HINT'.tr(),
+                ),
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.only(top: 30, left: 50, right: 50),
+              child: PrimaryButton(
+                onTap: widget.onConfirm,
+                text: "COMMON.CONFIRM".tr()
+              )
+            ),
+          ]
         ),
-        ]
       ),
-    );
-  }
-}
-
-
-class ComboBox extends StatefulWidget {
-
-  ComboBox({Key key}) : super(key: key);
-
-  @override
-  _ComboBoxState createState() => _ComboBoxState();
-}
-
-class _ComboBoxState extends State<ComboBox> {
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-       
-    );
-  }
+    )
+  );
 }
 
 
