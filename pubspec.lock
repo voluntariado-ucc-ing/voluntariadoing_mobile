@@ -169,6 +169,8 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "1.3.6"
+<<<<<<< HEAD
+=======
   easy_localization:
     dependency: "direct main"
     description:
@@ -176,6 +178,17 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "2.3.2"
+<<<<<<< HEAD
+=======
+  fake_async:
+    dependency: transitive
+    description:
+      name: fake_async
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "1.1.0"
+>>>>>>> b118ab07a7652741a97ff4688710c2695af9153a
+>>>>>>> development
   fixnum:
     dependency: transitive
     description:
@@ -266,6 +279,10 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "3.1.4"
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> development
   image:
     dependency: transitive
     description:
@@ -273,6 +290,10 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "2.1.12"
+<<<<<<< HEAD
+=======
+=======
+>>>>>>> development
   intl:
     dependency: "direct main"
     description:
@@ -280,6 +301,7 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "0.16.1"
+>>>>>>> b118ab07a7652741a97ff4688710c2695af9153a
   io:
     dependency: transitive
     description:
