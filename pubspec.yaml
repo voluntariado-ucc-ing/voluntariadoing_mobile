@@ -38,3 +38,5 @@ flutter:
     - assets/images/donations/rejected.svg
     - assets/translations/
     - fonts/
+    - assets/mock/careers.json
+    - assets/mock/university.json
