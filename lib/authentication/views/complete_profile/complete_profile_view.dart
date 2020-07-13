@@ -21,7 +21,6 @@ class CompleteProfileView extends StatelessWidget {
       PersonalInformationTab(),
       ContactDetailsTab(),
       PersonalInformationTab(),
-      PersonalInformationTab(),
       CareerInformationTab(),
     ],
   );
