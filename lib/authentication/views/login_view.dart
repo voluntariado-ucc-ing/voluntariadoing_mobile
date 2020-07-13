@@ -71,7 +71,7 @@ class _LoginViewState extends State<LoginView> {
           padding: const EdgeInsets.only(top: 30, left: 40, right: 40),
           child: PrimaryButton(
             onTap: (){
-              Navigator.of(context).pushReplacementNamed(AppRoutes.newPassword);
+              Navigator.of(context).pushReplacementNamed(AppRoutes.completeProfile);
             },
             text: 'AUTHENTICATION.LOGIN'.tr(),
           ),

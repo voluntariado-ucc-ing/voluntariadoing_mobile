@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:voluntariadoing_mobile/common/widgets/section_stepper.dart';
 import 'package:voluntariadoing_mobile/config/color_palette.dart';
 
@@ -46,18 +47,15 @@ class _SteppedViewState extends State<SteppedView> {
 
   void _back() => _controller.previousPage(
     duration: Duration(milliseconds: 300), curve: Curves.ease);
+  
+  void _forward() => _controller.nextPage(
+    duration: Duration(milliseconds: 300), curve: Curves.ease);
 
   @override
   Widget build(BuildContext context) => Scaffold(
     backgroundColor: Colors.white,
-    floatingActionButtonLocation: FloatingActionButtonLocation.startFloat,
-    floatingActionButton: (currentStep != null && currentStep > 0) 
-      ? FloatingActionButton(
-        backgroundColor: ColorPalette.secondaryBlue,
-        child: Icon(Icons.arrow_back_ios, color: Colors.white),
-        onPressed: _back,
-      )
-      : null,
+    floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
+    floatingActionButton: _buildFab(),
     body: Container(
       child: SafeArea(
         child: Column(
@@ -66,7 +64,7 @@ class _SteppedViewState extends State<SteppedView> {
               children: [
                 Padding(
                   padding: const EdgeInsets.only(
-                    left: 20, right: 20, top: 30, bottom: 10),
+                    left: 30, right: 30, top: 30, bottom: 10),
                   child: SectionStepper(
                     stepsCount: stepsCount,
                     progress: _notifier,
@@ -89,4 +87,57 @@ class _SteppedViewState extends State<SteppedView> {
       )
     ),
   );
+
+  Widget _buildFab() {
+    final shouldShowBack = currentStep != null && currentStep > 0;
+    final shouldShowForward = currentStep != null && currentStep != stepsCount - 1;
+    
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 20),
+      child: Row(
+        mainAxisAlignment: shouldShowBack 
+          ? MainAxisAlignment.spaceBetween
+          : MainAxisAlignment.end,
+        children: [
+          if (shouldShowBack)
+            FloatingActionButton(
+              mini: true,
+              backgroundColor: ColorPalette.secondaryBlue,
+              child: Icon(
+                Icons.arrow_back, 
+                color: Colors.white,
+                size: 20,
+              ),
+              onPressed: _back,
+            ),
+          if (shouldShowForward)
+            FloatingActionButton.extended(
+              backgroundColor: ColorPalette.primaryBlue,
+              onPressed: _forward,
+              label: Row(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  Text(
+                    'COMMON.CONTINUE'.tr(),
+                    style: Theme.of(context).textTheme.button
+                      .copyWith(
+                        fontWeight: FontWeight.w600,
+                        color: Colors.white
+                      ),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.only(left: 10),
+                    child: Icon(
+                      Icons.arrow_forward, 
+                      color: Colors.white,
+                      size: 16,
+                    ),
+                  )
+                ],
+              )
+            ),
+        ],
+      )
+    );
+  }
 }
