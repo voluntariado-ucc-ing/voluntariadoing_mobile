@@ -4,7 +4,8 @@
             "id": 0,
             "title": "¿Tiene o tuvo alguna fractura?",
             "type": "SWITCH",
-            "options": null
+            "options": null,
+            "dependencies": []
         },
         {
             "id": 1,
@@ -19,13 +20,15 @@
                 "AB-",
                 "0+",
                 "0-"
-            ]
+            ],
+            "dependencies": []
         },
         {
             "id": 2,
             "title": "¿En qué centros de salud puede atenderse?",
             "type": "TEXT",
-            "options": null
+            "options": null,
+            "dependencies": []
         }
     ]
 }
