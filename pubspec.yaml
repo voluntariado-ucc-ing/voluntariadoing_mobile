@@ -20,6 +20,7 @@ dependencies:
   intl: ^0.16.1
   auto_size_text: ^2.1.0
   json_annotation: ^3.0.1
+  cached_network_image: ^2.2.0+1
 
 dependency_overrides:
   image: ^2.1.14

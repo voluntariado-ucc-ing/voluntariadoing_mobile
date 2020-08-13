@@ -1,14 +1,19 @@
 {
     "COMMON": {
         "DATE_PICKER_HINT": "Seleccionar fecha...",
-        "DROPDOWN_HINT": "Seleccionar ...",
+        "DROPDOWN_HINT": "Seleccionar...",
         "CONFIRM": "Confirmar",
         "CONTINUE": "Continuar",
         "UNIVERSITY": "Universidad",
         "CAREER": "Carrera",
         "YES": "Si",
         "NO": "No",
-        "FINISH": "Finalizar"
+        "FINISH": "Finalizar",
+        "SEARCH_HINT": "Buscar...",
+        "EDIT_PROFILE": "Editar perfil",
+        "MEETINGS": "Reuniones",
+        "DONATIONS": "Donaciones",
+        "SETTINGS": "Ajustes"
     },
     "AUTHENTICATION": {
         "EMAIL": "Email",
@@ -46,5 +51,8 @@
         "POSTAL_HINT": "Ingrese codigo postal...",
         "OPTIONAL": "Opcional",
         "OPTIONAL_HINT": "Ingrese cualquier informacion extra de usted..."
-    }   
+    },
+    "DONATIONS": {
+        "DONATIONS_TITLE": "Donaciones"
+    }
 }
