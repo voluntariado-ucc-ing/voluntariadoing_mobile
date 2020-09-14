@@ -7,14 +7,6 @@ import 'package:voluntariadoing_mobile/common/widgets/section_title.dart';
 
 class ContactDetailsTab extends StatelessWidget {
 
-  final _emailController  = TextEditingController();
-  final _telController    = TextEditingController();
-  final _cityController   = TextEditingController();
-  final _streetController = TextEditingController();
-  final _numberController = TextEditingController();
-  final _postalController = TextEditingController();
-  final _optionalCOntroller = TextEditingController();
-
   @override
   Widget build(BuildContext context) => ScrollConfiguration(
     behavior: NoOverscrollBehavior(),
@@ -30,7 +22,6 @@ class ContactDetailsTab extends StatelessWidget {
           child: Labeled(
             label: 'AUTHENTICATION.EMAIL'.tr(),
             child: RaisedTextInput(
-              controller: _emailController,
               hintText: 'AUTHENTICATION.EMAIL_HINT'.tr(),
             ),
           ),
@@ -40,7 +31,6 @@ class ContactDetailsTab extends StatelessWidget {
           child: Labeled(
             label: 'AUTHENTICATION.TELEPHONE'.tr(),
             child: RaisedTextInput(
-              controller: _telController,
               hintText: 'AUTHENTICATION.TELEPHONE_HINT'.tr(),
             ),
           ),
@@ -50,7 +40,6 @@ class ContactDetailsTab extends StatelessWidget {
           child: Labeled(
             label: 'AUTHENTICATION.CITY'.tr(),
             child: RaisedTextInput(
-              controller: _cityController,
               hintText: 'AUTHENTICATION.CITY_HINT'.tr(),
             ),
           ),
@@ -60,7 +49,6 @@ class ContactDetailsTab extends StatelessWidget {
           child: Labeled(
             label: 'AUTHENTICATION.STREET'.tr(),
             child: RaisedTextInput(
-              controller: _streetController,
               hintText: 'AUTHENTICATION.STREET_HINT'.tr(),
             ),
           ),
@@ -70,7 +58,6 @@ class ContactDetailsTab extends StatelessWidget {
           child: Labeled(
             label: 'AUTHENTICATION.NUMBER'.tr(),
             child: RaisedTextInput(
-              controller: _numberController,
               hintText: 'AUTHENTICATION.NUMBER_HINT'.tr(),
             ),
           ),
@@ -80,7 +67,6 @@ class ContactDetailsTab extends StatelessWidget {
           child: Labeled(
             label: 'AUTHENTICATION.POSTAL'.tr(),
             child: RaisedTextInput(
-              controller: _postalController,
               hintText: 'AUTHENTICATION.POSTAL_HINT'.tr(),
             ),
           ),
@@ -90,7 +76,6 @@ class ContactDetailsTab extends StatelessWidget {
           child: Labeled(
             label: 'AUTHENTICATION.OPTIONAL'.tr(),
             child: RaisedTextInput(
-              controller: _optionalCOntroller,
               hintText: 'AUTHENTICATION.OPTIONAL_HINT'.tr(),
               expanded: true,
             ),

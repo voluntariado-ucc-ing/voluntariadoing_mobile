@@ -8,9 +8,6 @@ import 'package:voluntariadoing_mobile/common/widgets/section_title.dart';
 
 class PersonalInformationTab extends StatelessWidget {
 
-  final _nameController = TextEditingController();
-  final _lastNameController = TextEditingController();
-
   final _firstDate = DateTime(1930, 1, 1);
   final _lastDate = DateTime.now();
   
@@ -29,7 +26,6 @@ class PersonalInformationTab extends StatelessWidget {
           child: Labeled(
             label: 'AUTHENTICATION.NAME'.tr(),
             child: RaisedTextInput(
-              controller: _nameController,
               hintText: 'AUTHENTICATION.NAME_HINT'.tr(),
             ),
           ),
@@ -39,7 +35,6 @@ class PersonalInformationTab extends StatelessWidget {
           child: Labeled(
             label: 'AUTHENTICATION.LAST_NAME'.tr(),
             child: RaisedTextInput(
-              controller: _lastNameController,
               hintText: 'AUTHENTICATION.LAST_NAME_HINT'.tr(),
             ),
           ),

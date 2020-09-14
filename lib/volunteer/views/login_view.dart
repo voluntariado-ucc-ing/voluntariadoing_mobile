@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:easy_localization/easy_localization.dart';
+import 'package:voluntariadoing_mobile/common/mixins/navigator_mixin.dart';
 import 'package:voluntariadoing_mobile/common/widgets/no_overscroll_behavior.dart';
 import 'package:voluntariadoing_mobile/common/widgets/presentation_logo.dart';
 import 'package:voluntariadoing_mobile/common/widgets/primary_button.dart';
 import 'package:voluntariadoing_mobile/common/widgets/raised_text_input.dart';
 import 'package:voluntariadoing_mobile/common/widgets/secondary_button.dart';
-import 'package:voluntariadoing_mobile/config/app_routes.dart';
 import 'package:voluntariadoing_mobile/config/color_palette.dart';
+import 'package:voluntariadoing_mobile/volunteer/views/new_password_first_time_view.dart';
 
 class LoginView extends StatefulWidget {
   
@@ -14,10 +15,7 @@ class LoginView extends StatefulWidget {
   _LoginViewState createState() => _LoginViewState();
 }
 
-class _LoginViewState extends State<LoginView> {
-
-  final TextEditingController _mailInputController = TextEditingController();
-  final TextEditingController _passwordInputController = TextEditingController();
+class _LoginViewState extends State<LoginView> with NavigatorMixin {
 
   @override
   Widget build(BuildContext context) => Scaffold(
@@ -55,14 +53,12 @@ class _LoginViewState extends State<LoginView> {
         Padding(
           padding: const EdgeInsets.only(top: 20),
           child: RaisedTextInput(
-            controller: _mailInputController,
             hintText: 'AUTHENTICATION.EMAIL_HINT'.tr(),
           )
         ),
         Padding(
           padding: const EdgeInsets.only(top: 10),
           child: RaisedTextInput(
-            controller: _passwordInputController,
             hintText: 'AUTHENTICATION.PASSWORD_HINT'.tr(),
             obscureText: true,
           )
@@ -71,7 +67,7 @@ class _LoginViewState extends State<LoginView> {
           padding: const EdgeInsets.only(top: 30, left: 40, right: 40),
           child: PrimaryButton(
             onTap: (){
-              Navigator.of(context).pushReplacementNamed(AppRoutes.newPasswordFirstTime);
+              pushReplacement(context, NewPasswordFirstTimeView());
             },
             text: 'AUTHENTICATION.LOGIN'.tr(),
           ),

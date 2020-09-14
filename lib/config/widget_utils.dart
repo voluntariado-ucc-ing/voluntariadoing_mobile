@@ -23,4 +23,7 @@ abstract class WidgetUtils {
     )
   ];
 
+  static double getWidthPercentage(BuildContext ctx, double percentage)
+    => (MediaQuery.of(ctx).size.width * percentage) / 100;
+
 }

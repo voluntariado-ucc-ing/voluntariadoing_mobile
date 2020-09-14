@@ -9,7 +9,6 @@ import 'package:voluntariadoing_mobile/config/color_palette.dart';
 
 
 class CareerInformationTab extends StatelessWidget {
-
  
   Widget build(BuildContext context) => ScrollConfiguration(
     behavior: NoOverscrollBehavior(),

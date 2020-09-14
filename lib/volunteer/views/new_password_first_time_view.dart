@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:easy_localization/easy_localization.dart';
+import 'package:voluntariadoing_mobile/common/mixins/navigator_mixin.dart';
 import 'package:voluntariadoing_mobile/common/widgets/labeled.dart';
 import 'package:voluntariadoing_mobile/common/widgets/no_overscroll_behavior.dart';
 import 'package:voluntariadoing_mobile/common/widgets/primary_button.dart';
 import 'package:voluntariadoing_mobile/common/widgets/raised_text_input.dart';
 import 'package:voluntariadoing_mobile/common/widgets/section_title.dart';
-import 'package:voluntariadoing_mobile/config/app_routes.dart';
+import 'package:voluntariadoing_mobile/volunteer/views/complete_profile/complete_profile_view.dart';
 
 
 class NewPasswordFirstTimeView extends StatefulWidget {
@@ -18,10 +19,8 @@ class NewPasswordFirstTimeView extends StatefulWidget {
   _NewPasswordFirstTimeViewState createState() => _NewPasswordFirstTimeViewState();
 }
 
-class _NewPasswordFirstTimeViewState extends State<NewPasswordFirstTimeView> {
-
-  TextEditingController _newPasswordController = TextEditingController();
-  TextEditingController _newPasswordConfirmationController = TextEditingController();
+class _NewPasswordFirstTimeViewState extends State<NewPasswordFirstTimeView> 
+  with NavigatorMixin {
 
   @override
   Widget build(BuildContext context) => Scaffold(
@@ -42,7 +41,6 @@ class _NewPasswordFirstTimeViewState extends State<NewPasswordFirstTimeView> {
               child: Labeled(
                 label: 'AUTHENTICATION.NEW_PASSWORD'.tr(),
                 child: RaisedTextInput(
-                  controller: _newPasswordController,
                   hintText: 'AUTHENTICATION.PASSWORD_HINT'.tr(),
                 ),
               ),
@@ -52,7 +50,6 @@ class _NewPasswordFirstTimeViewState extends State<NewPasswordFirstTimeView> {
               child: Labeled(
                 label: 'AUTHENTICATION.NEW_PASSWORD_CONFIRMATION'.tr(),
                 child: RaisedTextInput(
-                  controller: _newPasswordConfirmationController,
                   hintText: 'AUTHENTICATION.PASSWORD_HINT'.tr(),
                 ),
               ),
@@ -61,7 +58,7 @@ class _NewPasswordFirstTimeViewState extends State<NewPasswordFirstTimeView> {
               padding: const EdgeInsets.only(top: 30, left: 50, right: 50),
               child: PrimaryButton(
                 onTap: (){
-                  Navigator.of(context).pushReplacementNamed(AppRoutes.completeProfile);
+                  pushReplacement(context, CompleteProfileView());
                 },
                 text: "COMMON.CONFIRM".tr()
               )

@@ -4,9 +4,9 @@ import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:easy_localization/easy_localization.dart';
 
-import 'package:voluntariadoing_mobile/config/app_routes.dart';
 import 'package:voluntariadoing_mobile/config/color_palette.dart';
 import 'package:voluntariadoing_mobile/config/svg_assets.dart';
+import 'package:voluntariadoing_mobile/splash/views/splash_view.dart';
 
 Future<void> main() async {
 
@@ -39,7 +39,7 @@ class App extends StatelessWidget {
     final textTheme = Theme.of(context).textTheme;
 
     return MaterialApp(
-      title: 'Voluntariado UCC',
+      onGenerateTitle: (_) => 'APP.TITLE'.tr(),
       theme: ThemeData(
         cursorColor: ColorPalette.primaryBlue,
         primaryColor: ColorPalette.primaryBlue,
@@ -53,7 +53,7 @@ class App extends StatelessWidget {
       localizationsDelegates: context.localizationDelegates,
       supportedLocales: context.supportedLocales,
       locale: context.locale,
-      routes: AppRoutes.routes,
+      home: SplashView(),
     );
   }
 
