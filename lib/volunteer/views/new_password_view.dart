@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:voluntariadoing_mobile/common/widgets/labeled.dart';
 import 'package:voluntariadoing_mobile/common/widgets/no_overscroll_behavior.dart';
-import 'package:voluntariadoing_mobile/common/widgets/primary_button.dart';
+import 'package:voluntariadoing_mobile/common/widgets/primary_text_button.dart';
 import 'package:voluntariadoing_mobile/common/widgets/raised_text_input.dart';
 import 'package:voluntariadoing_mobile/common/widgets/section_title.dart';
 
@@ -18,10 +18,6 @@ class NewPasswordView extends StatefulWidget {
 }
 
 class _NewPasswordViewState extends State<NewPasswordView> {
-
-  TextEditingController _currentPasswordController = TextEditingController();
-  TextEditingController _newPasswordController = TextEditingController();
-  TextEditingController _newPasswordConfirmationController = TextEditingController();
 
   @override
   Widget build(BuildContext context) => Scaffold(
@@ -41,7 +37,6 @@ class _NewPasswordViewState extends State<NewPasswordView> {
               child: Labeled(
                 label: 'AUTHENTICATION.CURRENT_PASSWORD'.tr(),
                 child: RaisedTextInput(
-                  controller: _currentPasswordController,
                   hintText: 'AUTHENTICATION.PASSWORD_HINT'.tr(),
                 ),
               ),
@@ -51,7 +46,6 @@ class _NewPasswordViewState extends State<NewPasswordView> {
               child: Labeled(
                 label: 'AUTHENTICATION.NEW_PASSWORD'.tr(),
                 child: RaisedTextInput(
-                  controller: _newPasswordController,
                   hintText: 'AUTHENTICATION.PASSWORD_HINT'.tr(),
                 ),
               ),
@@ -61,14 +55,13 @@ class _NewPasswordViewState extends State<NewPasswordView> {
               child: Labeled(
                 label: 'AUTHENTICATION.NEW_PASSWORD_CONFIRMATION'.tr(),
                 child: RaisedTextInput(
-                  controller: _newPasswordConfirmationController,
                   hintText: 'AUTHENTICATION.PASSWORD_HINT'.tr(),
                 ),
               ),
             ),
             Padding(
               padding: const EdgeInsets.only(top: 30, left: 50, right: 50),
-              child: PrimaryButton(
+              child: PrimaryTextButton(
                 onTap: (){},
                 text: "COMMON.CONFIRM".tr()
               )

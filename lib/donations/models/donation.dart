@@ -1,27 +1,56 @@
-import 'dart:convert';
+import 'package:voluntariadoing_mobile/common/models/direction.dart';
 
-import 'package:voluntariadoing_mobile/donations/models/direction.dart';
+enum DonationStatus { toBeConfirmed, toBeRetrieved, retrieved, rejected }
+
+String donationStatusToKey(DonationStatus donationStatus) {
+  switch (donationStatus) {
+    case DonationStatus.toBeConfirmed:
+      return 'to_be_confirmed';
+    case DonationStatus.toBeRetrieved:
+      return 'to_be_retrieved';
+    case DonationStatus.retrieved:
+      return 'retrieved';
+    case DonationStatus.rejected:
+      return 'rejected';
+  }
+  return null;
+}
+
+DonationStatus keyToDonationStatus(String key) {
+  if (key == 'to_be_confirmed') {
+    return DonationStatus.toBeConfirmed;
+  } else if (key == 'to_be_retrieved') {
+    return DonationStatus.toBeConfirmed;
+  } else if (key == 'retrieved') {
+    return DonationStatus.retrieved;
+  } else if (key == 'rejected') {
+    return DonationStatus.rejected;
+  }
+  return null;
+}
 
 class Donation {
   int id;
   int typeId;
-  int donorId;
+  int donatorId;
   int quantity;
   String unit;
   String description;
   String element;
   DateTime date;
+  DonationStatus status;
   Direction direction;
 
   Donation({
     this.id,
     this.typeId,
-    this.donorId,
+    this.donatorId,
     this.quantity,
     this.unit,
     this.description,
     this.element,
     this.date,
+    this.status,
     this.direction,
   });
 
@@ -29,12 +58,13 @@ class Donation {
     return {
       'donation_id': id,
       'type_id': typeId,
-      'donor_id': donorId,
+      'donator_id': donatorId,
       'quantity': quantity,
       'unit': unit,
       'description': description,
       'element': element,
-      'date': date?.toString(),
+      'donation_date': date?.toString(),
+      'status': donationStatusToKey(status),
       'direction': direction?.toMap(),
     };
   }
@@ -45,26 +75,22 @@ class Donation {
     return Donation(
       id: map['id'],
       typeId: map['type_id'],
-      donorId: map['donor_id'],
+      donatorId: map['donator_id'],
       quantity: map['quantity'],
       unit: map['unit'],
       description: map['description'],
       element: map['element'],
-      date: DateTime.tryParse(map['date']),
+      date: DateTime.tryParse(map['donation_date']),
+      status: keyToDonationStatus(map['status']),
       direction: Direction.fromMap(map['direction']),
     );
   }
 
-  String toJson() => json.encode(toMap());
-
-  factory Donation.fromJson(String source) =>
-    Donation.fromMap(json.decode(source));
-
   @override
   String toString() {
-    return 'Donation(id: $id, typeId: $typeId, donorId: $donorId,'
-      'quantity: $quantity, unit: $unit, description: $description,'
-      'element: $element, date: $date, direction: $direction)';
+    return 'Donation(id: $id, typeId: $typeId, donatorId: $donatorId,'
+        'quantity: $quantity, unit: $unit, description: $description,'
+        'element: $element, date: $date, status: $status, direction: $direction)';
   }
 
   @override
@@ -72,27 +98,29 @@ class Donation {
     if (identical(this, o)) return true;
 
     return o is Donation &&
-      o.id == id &&
-      o.typeId == typeId &&
-      o.donorId == donorId &&
-      o.quantity == quantity &&
-      o.unit == unit &&
-      o.description == description &&
-      o.element == element &&
-      o.date == date &&
-      o.direction == direction;
+        o.id == id &&
+        o.typeId == typeId &&
+        o.donatorId == donatorId &&
+        o.quantity == quantity &&
+        o.unit == unit &&
+        o.description == description &&
+        o.element == element &&
+        o.date == date &&
+        o.status == status &&
+        o.direction == direction;
   }
 
   @override
   int get hashCode {
     return id.hashCode ^
-      typeId.hashCode ^
-      donorId.hashCode ^
-      quantity.hashCode ^
-      unit.hashCode ^
-      description.hashCode ^
-      element.hashCode ^
-      date.hashCode ^
-      direction.hashCode;
+        typeId.hashCode ^
+        donatorId.hashCode ^
+        quantity.hashCode ^
+        unit.hashCode ^
+        description.hashCode ^
+        element.hashCode ^
+        date.hashCode ^
+        status.hashCode ^
+        direction.hashCode;
   }
 }

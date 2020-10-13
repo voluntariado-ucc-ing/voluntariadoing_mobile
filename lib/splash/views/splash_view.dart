@@ -1,37 +1,34 @@
 import 'package:flutter/material.dart';
-import 'package:voluntariadoing_mobile/authentication/services/local_api_credentials_service.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+
+import 'package:voluntariadoing_mobile/authentication/cubits/authentication_cubit.dart';
 import 'package:voluntariadoing_mobile/common/mixins/navigator_mixin.dart';
 import 'package:voluntariadoing_mobile/common/widgets/presentation_logo.dart';
-import 'package:voluntariadoing_mobile/donations/views/donations_view.dart';
+import 'package:voluntariadoing_mobile/volunteer/utils/volunteer_view_utils.dart';
 import 'package:voluntariadoing_mobile/volunteer/views/login_view.dart';
 
 class SplashView extends StatelessWidget with NavigatorMixin {
-  final _localApiCredentialsService = LocalApiCredentialsService();
-
-  Future<void> _checkAuthStatus(BuildContext ctx) async {
-    final credentials = await _localApiCredentialsService.getCredentials();
-
-    Widget view;
-    if (credentials == null) {
-      view = _buildLogin();
-    } else {
-      view = _buildDonations();
-    }
-
-    pushReplacement(ctx, view);
-  }
-
-  Widget _buildLogin() => LoginView();
-
-  Widget _buildDonations() => DonationsView();
+  Widget _buildCredentialsNotFoundView() => LoginView();
 
   @override
   Widget build(BuildContext context) {
-    _checkAuthStatus(context);
-
-    return Scaffold(
-      backgroundColor: Colors.white,
-      body: Center(child: PresentationLogo()),
+    final cubit = BlocProvider.of<AuthenticationCubit>(context);
+    cubit.getAuthenticationUser();
+    return BlocListener<AuthenticationCubit, AuthenticationState>(
+      cubit: cubit,
+      listener: (_, state) {
+        Widget view;
+        if (state is AuthenticationSuccess) {
+          view = getAfterAuthenticationView(state.authenticationUser);
+        } else {
+          view = _buildCredentialsNotFoundView();
+        }
+        pushReplacement(context, view);
+      },
+      child: Scaffold(
+        backgroundColor: Colors.white,
+        body: Center(child: PresentationLogo()),
+      ),
     );
   }
 }

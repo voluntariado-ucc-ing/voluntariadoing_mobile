@@ -11,7 +11,9 @@ class SelectButtonGroup extends StatefulWidget {
 
   /// A function to call when a label is pressed. 
   /// It receives the pressed label index as an argument.
-  /// If the label was unselected, it'll receive a null index.
+  /// 
+  /// If [unselectable] is true and the currently selected label is pressed,
+  /// this function will receive a null index.
   final OnLabelPressed onLabelPressed;
   
   final int initialIndex;
@@ -22,13 +24,16 @@ class SelectButtonGroup extends StatefulWidget {
 
   final Color unselectedLabelColor;
 
+  final bool unselectable;
+
   SelectButtonGroup({
     @required this.labels,
     this.onLabelPressed,
     this.initialIndex,
     this.selectedColor = ColorPalette.primaryBlue,
     this.selectedLabelColor = Colors.white,
-    this.unselectedLabelColor = ColorPalette.primaryBlue
+    this.unselectedLabelColor = ColorPalette.primaryBlue,
+    this.unselectable = true
   });
 
   @override
@@ -92,6 +97,7 @@ class _SelectButtonGroupState extends State<SelectButtonGroup> {
 
   void _onLabelPressed(int index) {
     final value = index == _selectedIndex ? null : index;
+    if (!widget.unselectable && value == null) return;
     setState(() => _selectedIndex = value);
     if (widget.onLabelPressed != null) {
       widget.onLabelPressed(value);

@@ -9,6 +9,7 @@ class RaisedTextInput extends StatefulWidget {
   final bool expanded;
   final bool obscureText;
   final TextEditingController controller;
+  final TextInputType keyboardType;
   final void Function(String) onChanged;
   
 
@@ -17,6 +18,7 @@ class RaisedTextInput extends StatefulWidget {
     this.onChanged,
     this.hintText,
     this.icon,
+    this.keyboardType,
     this.obscureText = false,
     this.expanded = false,
   });
@@ -63,6 +65,7 @@ class _RaisedTextInputState extends State<RaisedTextInput> {
               obscureText: widget.obscureText,
               scrollController: _scrollController,
               maxLines: widget.expanded ? 5 : 1,
+              keyboardType: widget.keyboardType,
               decoration: InputDecoration.collapsed(
                 hintText: widget.hintText ?? '',
               )

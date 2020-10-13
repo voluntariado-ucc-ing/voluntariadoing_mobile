@@ -8,8 +8,11 @@ mixin NavigatorMixin {
     return Navigator.of(context).push(route);
   }
 
-  Future<T> pushReplacement<T>(BuildContext context, Widget view,
-      {bool fullscreenDialog = false}) {
+  Future<T> pushReplacement<T>(
+    BuildContext context,
+    Widget view, {
+    bool fullscreenDialog = false,
+  }) {
     final route = _buildRoute<T>(context, view, fullscreenDialog);
     return Navigator.of(context).pushReplacement(route);
   }

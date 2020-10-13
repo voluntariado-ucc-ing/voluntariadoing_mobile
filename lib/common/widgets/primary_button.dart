@@ -5,12 +5,12 @@ import 'package:voluntariadoing_mobile/config/widget_utils.dart';
 class PrimaryButton extends StatelessWidget {
   
   final VoidCallback onTap;
-  final String text;
+  final Widget child;
   
   PrimaryButton({
     Key key,
     @required this.onTap,
-    @required this.text
+    @required this.child
   }) : super(key: key);
 
   @override
@@ -28,14 +28,7 @@ class PrimaryButton extends StatelessWidget {
           child: Padding(
             padding: const EdgeInsets.symmetric(vertical: 10),
             child: Center(
-              child: Text(
-                text,
-                style: Theme.of(context).textTheme.button
-                  .copyWith(
-                    color: Colors.white,
-                    fontWeight: FontWeight.w700
-                  )
-                ),
+              child: child
             ),
           )
         ),

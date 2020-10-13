@@ -1,5 +1,3 @@
-import 'dart:convert';
-
 import 'package:flutter/foundation.dart';
 
 class MedicalInfoItem {
@@ -45,15 +43,10 @@ class MedicalInfoItem {
     return MedicalInfoItem(
       id: map['id'],
       title: map['title'],
-      options: List<String>.from(map['options']),
+      options: map['options'] != null ? List<String>.from(map['options']) : null,
       type: type
     );
   }
-
-  String toJson() => json.encode(toMap());
-
-  factory MedicalInfoItem.fromJson(String source) => 
-    MedicalInfoItem.fromMap(json.decode(source));
 
   @override
   String toString() => 

@@ -1,25 +1,27 @@
-import 'dart:convert';
-import 'package:flutter/services.dart' show rootBundle;
-import 'package:voluntariadoing_mobile/volunteer/models/medical_info_item.dart';
-import 'package:voluntariadoing_mobile/authentication/models/api_credentials.dart';
-import 'package:voluntariadoing_mobile/common/repositories/api_repository.dart';
+import 'package:voluntariadoing_mobile/volunteer/models/volunteer.dart';
+import 'package:voluntariadoing_mobile/volunteer/providers/volunteer_api_provider.dart';
 
-class VolunteerRepository extends ApiRepository {
-  @override
-  String get endpoint => 'volunteer';
+class VolunteerRepository {
+  VolunteerApiProvider _provider;
 
-  VolunteerRepository(ApiCredentials credentials) : super(credentials);
+  VolunteerRepository({
+    VolunteerApiProvider provider,
+  }) : _provider = provider ?? VolunteerApiProvider();
 
-  Future<List<MedicalInfoItem>> getMedicalInformation() async {
-    final jsonString =
-        await rootBundle.loadString('assets/mock/medical_information.json');
-    final decoded = json.decode(jsonString);
-    final items = decoded['items'];
-    if (items != null) {
-      final medicalInfoItems =
-          (items as List).map((e) => MedicalInfoItem.fromJson(e)).toList();
-      return medicalInfoItems;
-    }
-    return null;
+  Future<void> updatePassword(
+    String username,
+    String currentPassword,
+    String newPassword,
+  ) async {
+    await _provider.updatePassword(username, currentPassword, newPassword);
+  }
+
+  Future<void> completeProfile(Volunteer volunteer) async {
+    await _provider.completeProfile(volunteer);
+  }
+
+  Future<Volunteer> getById(int id) async {
+    final volunteer = await _provider.getById(id);
+    return volunteer;
   }
 }

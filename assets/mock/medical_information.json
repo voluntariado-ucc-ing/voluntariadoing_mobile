@@ -29,6 +29,237 @@
             "type": "TEXT",
             "options": null,
             "dependencies": []
+        },
+        {
+            "id": 3,
+            "title": "Obra social a la que pertenece",
+            "type": "TEXT",
+            "options": null,
+            "dependencies": []
+        },
+        {
+            "id": 4,
+            "title": "Número de carnet-socio",
+            "type": "TEXT",
+            "options": null,
+            "dependencies": []
+        },
+        {
+            "id": 5,
+            "title": "¿Se encuentra vacunado contra el tétanos?",
+            "type": "SWITCH",
+            "options": null,
+            "dependencies": []
+        },
+        {
+            "id": 6,
+            "title": "¿En qué año?",
+            "type": "TEXT",
+            "options": null,
+            "dependencies": [5]
+        },
+        {
+            "id": 7,
+            "title": "¿Se encuentra bajo tratamiento médico?",
+            "type": "SWITCH",
+            "options": null,
+            "dependencies": []
+        },
+        {
+            "id": 8,
+            "title": "¿Cuál es la razón?",
+            "type": "TEXT",
+            "options": null,
+            "dependencies": [7]
+        },
+        {
+            "id": 9,
+            "title": "¿Debe tomar medicamentos?",
+            "type": "SWITCH",
+            "options": null,
+            "dependencies": []
+        },
+        {
+            "id": 10,
+            "title": "Nombre del medicamento",
+            "type": "TEXT",
+            "options": null,
+            "dependencies": [9]
+        },
+        {
+            "id": 11,
+            "title": "Frecuencia",
+            "type": "TEXT",
+            "options": null,
+            "dependencies": [9]
+        },
+        {
+            "id": 12,
+            "title": "¿Tiene algún tipo de alergia?",
+            "type": "SWITCH",
+            "options": null,
+            "dependencies": []
+        },
+        {
+            "id": 13,
+            "title": "¿Cuál?",
+            "type": "TEXT",
+            "options": null,
+            "dependencies": [12]
+        },
+        {
+            "id": 14,
+            "title": "¿Tiene alergia a algún medicamento?",
+            "type": "SWITCH",
+            "options": null,
+            "dependencies": []
+        },
+        {
+            "id": 15,
+            "title": "Nombre del medicamento",
+            "type": "TEXT",
+            "options": null,
+            "dependencies": [14]
+        },
+        {
+            "id": 16,
+            "title": "¿Padece enfermedades cardiacas?",
+            "type": "SWITCH",
+            "options": null,
+            "dependencies": []
+        },
+        {
+            "id": 17,
+            "title": "Enfermedad",
+            "type": "TEXT",
+            "options": null,
+            "dependencies": [16]
+        },
+        {
+            "id": 18,
+            "title": "¿Padece hipertensión arterial?",
+            "type": "SWITCH",
+            "options": null,
+            "dependencies": []
+        },
+        {
+            "id": 19,
+            "title": "¿Padece Lipotimias frecuentes?",
+            "type": "SWITCH",
+            "options": null,
+            "dependencies": []
+        },
+        {
+            "id": 20,
+            "title": "¿Padece enfermedades neurológicas?",
+            "type": "SWITCH",
+            "options": null,
+            "dependencies": []
+        },
+        {
+            "id": 21,
+            "title": "¿Cuáles?",
+            "type": "TEXT",
+            "options": null,
+            "dependencies": [20]
+        },
+        {
+            "id": 22,
+            "title": "¿Padece diabetes?",
+            "type": "SWITCH",
+            "options": null,
+            "dependencies": []
+        },
+        {
+            "id": 23,
+            "title": "¿Padece asma?",
+            "type": "SWITCH",
+            "options": null,
+            "dependencies": []
+        },
+        {
+            "id": 24,
+            "title": "¿Padece enfermedades digestivas?",
+            "type": "SWITCH",
+            "options": null,
+            "dependencies": []
+        },
+        {
+            "id": 25,
+            "title": "¿Cuáles?",
+            "type": "TEXT",
+            "options": null,
+            "dependencies": [24]
+        },
+        {
+            "id": 26,
+            "title": "¿Padece enfermedades endocrinológicas?",
+            "type": "SWITCH",
+            "options": null,
+            "dependencies": []
+        },
+        {
+            "id": 27,
+            "title": "¿Cuáles?",
+            "type": "TEXT",
+            "options": null,
+            "dependencies": [26]
+        },
+        {
+            "id": 28,
+            "title": "¿Padece o padeció alteraciones en la columna vertebral?",
+            "type": "SWITCH",
+            "options": null,
+            "dependencies": []
+        },
+        {
+            "id": 29,
+            "title": "¿Puede especificar cuál?",
+            "type": "TEXT",
+            "options": null,
+            "dependencies": [28]
+        },
+        {
+            "id": 30,
+            "title": "¿Padece trastornos de la coagulación?",
+            "type": "SWITCH",
+            "options": null,
+            "dependencies": []
+        },
+        {
+            "id": 31,
+            "title": "¿Fuma?",
+            "type": "SWITCH",
+            "options": null,
+            "dependencies": []
+        },
+        {
+            "id": 32,
+            "title": "¿Padece algún tipo de intolerancia alimenticia?",
+            "type": "SWITCH",
+            "options": null,
+            "dependencies": []
+        },
+        {
+            "id": 33,
+            "title": "¿Cuál?",
+            "type": "TEXT",
+            "options": null,
+            "dependencies": [32]
+        },
+        {
+            "id": 34,
+            "title": "¿Algún comentario que considere importante?",
+            "type": "SWITCH",
+            "options": null,
+            "dependencies": []
+        },
+        {
+            "id": 35,
+            "title": "Cuéntenos",
+            "type": "TEXT",
+            "options": null,
+            "dependencies": [34]
         }
     ]
 }
