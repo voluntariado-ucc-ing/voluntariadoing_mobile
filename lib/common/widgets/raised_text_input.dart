@@ -1,12 +1,15 @@
 import 'package:flutter/material.dart';
+import 'package:voluntariadoing_mobile/config/color_palette.dart';
 import 'package:voluntariadoing_mobile/config/widget_utils.dart';
 
 class RaisedTextInput extends StatefulWidget {
 
+  final IconData icon;
   final String hintText;
   final bool expanded;
   final bool obscureText;
   final TextEditingController controller;
+  final TextInputType keyboardType;
   final void Function(String) onChanged;
   
 
@@ -14,6 +17,8 @@ class RaisedTextInput extends StatefulWidget {
     this.controller,
     this.onChanged,
     this.hintText,
+    this.icon,
+    this.keyboardType,
     this.obscureText = false,
     this.expanded = false,
   });
@@ -46,15 +51,27 @@ class _RaisedTextInputState extends State<RaisedTextInput> {
         horizontal: 20,
         vertical: 10,
       ),
-      child: TextField(
-        controller: widget.controller,
-        onChanged: widget.onChanged,
-        obscureText: widget.obscureText,
-        scrollController: _scrollController,
-        maxLines: widget.expanded ? 5 : 1,
-        decoration: InputDecoration.collapsed(
-          hintText: widget.hintText ?? '',
-        )
+      child: Row(
+        children: [
+          if (widget.icon != null)
+            Padding(
+              padding: const EdgeInsets.only(right: 5),
+              child: Icon(widget.icon, color: ColorPalette.darkGrey),
+            ),
+          Expanded(
+            child: TextField(
+              controller: widget.controller,
+              onChanged: widget.onChanged,
+              obscureText: widget.obscureText,
+              scrollController: _scrollController,
+              maxLines: widget.expanded ? 5 : 1,
+              keyboardType: widget.keyboardType,
+              decoration: InputDecoration.collapsed(
+                hintText: widget.hintText ?? '',
+              )
+            ),
+          ),
+        ],
       ),
     ),
   );

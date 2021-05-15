@@ -1,14 +1,24 @@
 {
+    "APP": {
+        "TITLE": "Voluntariado UCC"
+    },
     "COMMON": {
         "DATE_PICKER_HINT": "Seleccionar fecha...",
-        "DROPDOWN_HINT": "Seleccionar ...",
+        "DROPDOWN_HINT": "Seleccionar...",
         "CONFIRM": "Confirmar",
         "CONTINUE": "Continuar",
         "UNIVERSITY": "Universidad",
         "CAREER": "Carrera",
         "YES": "Si",
         "NO": "No",
-        "FINISH": "Finalizar"
+        "FINISH": "Finalizar",
+        "SEARCH_HINT": "Buscar...",
+        "EDIT_PROFILE": "Editar perfil",
+        "MEETINGS": "Reuniones",
+        "DONATIONS": "Donaciones",
+        "SETTINGS": "Ajustes",
+        "ERROR": "Error",
+        "QUANTITY": "Cantidad"
     },
     "AUTHENTICATION": {
         "EMAIL": "Email",
@@ -45,6 +55,15 @@
         "POSTAL": "Codigo postal",
         "POSTAL_HINT": "Ingrese codigo postal...",
         "OPTIONAL": "Opcional",
-        "OPTIONAL_HINT": "Ingrese cualquier informacion extra de usted..."
-    }   
+        "OPTIONAL_HINT": "Ingrese cualquier informacion extra de usted...",
+        "PASSWORDS_DONT_MATCH": "Las contraseñas no coinciden"
+    },
+    "DONATIONS": {
+        "DONATIONS_TITLE": "Donaciones",
+        "DONATION_DETAIL_TITLE": "Donación",
+        "TO_BE_CONFIRMED": "Por confirmar",
+        "TO_BE_RETRIEVED": "Por retirar",
+        "RETRIEVED": "Retirada",
+        "REJECTED": "Rechazada"
+    }
 }
