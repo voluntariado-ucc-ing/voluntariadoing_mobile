@@ -67,13 +67,21 @@ class Donation {
       'status': donationStatusToKey(status),
       'direction': direction?.toMap(),
     };
+
+
+  }
+ //el map solo lleva el estado para el UpdateStatus
+  Map<String, dynamic> toMap2() {
+    return {
+      'status': donationStatusToKey(status),
+    };
   }
 
   factory Donation.fromMap(Map<String, dynamic> map) {
     if (map == null) return null;
 
     return Donation(
-      id: map['id'],
+      id: map['donation_id'],
       typeId: map['type_id'],
       donatorId: map['donator_id'],
       quantity: map['quantity'],
@@ -88,7 +96,7 @@ class Donation {
 
   @override
   String toString() {
-    return 'Donation(id: $id, typeId: $typeId, donatorId: $donatorId,'
+    return 'Donation(donation_id: $id, typeId: $typeId, donatorId: $donatorId,'
         'quantity: $quantity, unit: $unit, description: $description,'
         'element: $element, date: $date, status: $status, direction: $direction)';
   }
@@ -123,4 +131,5 @@ class Donation {
         status.hashCode ^
         direction.hashCode;
   }
+
 }

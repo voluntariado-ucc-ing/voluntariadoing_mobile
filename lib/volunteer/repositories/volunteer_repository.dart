@@ -1,6 +1,9 @@
 import 'package:voluntariadoing_mobile/volunteer/models/volunteer.dart';
 import 'package:voluntariadoing_mobile/volunteer/providers/volunteer_api_provider.dart';
 
+import 'package:voluntariadoing_mobile/volunteer/models/volunteer.dart';
+import 'package:voluntariadoing_mobile/volunteer/providers/volunteer_api_provider.dart';
+
 class VolunteerRepository {
   VolunteerApiProvider _provider;
 
@@ -9,10 +12,10 @@ class VolunteerRepository {
   }) : _provider = provider ?? VolunteerApiProvider();
 
   Future<void> updatePassword(
-    String username,
-    String currentPassword,
-    String newPassword,
-  ) async {
+      String username,
+      String currentPassword,
+      String newPassword,
+      ) async {
     await _provider.updatePassword(username, currentPassword, newPassword);
   }
 

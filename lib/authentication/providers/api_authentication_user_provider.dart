@@ -1,5 +1,7 @@
 import 'dart:async';
+import 'dart:io';
 
+import 'package:flutter/cupertino.dart';
 import 'package:voluntariadoing_mobile/authentication/models/authentication_user.dart';
 import 'package:voluntariadoing_mobile/common/providers/api_client.dart';
 
@@ -22,6 +24,7 @@ class ApiAuthenticationUserProvider {
       _authenticationUri,
       body: {'username': username, 'password': password},
     );
+    stderr.writeln(response);
     final responseMap = {
       'volunteer_id': response['volunteer_id'],
       'username': response['username'],

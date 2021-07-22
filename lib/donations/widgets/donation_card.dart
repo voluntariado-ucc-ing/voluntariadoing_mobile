@@ -1,101 +1,302 @@
 import 'package:flutter/material.dart';
 import 'package:auto_size_text/auto_size_text.dart';
-import 'package:flutter_svg/svg.dart';
+
 import 'package:easy_localization/easy_localization.dart';
+import 'package:flutter_svg/svg.dart';
+import 'package:provider/provider.dart';
 
 import 'package:voluntariadoing_mobile/common/widgets/slidable_card.dart';
 import 'package:voluntariadoing_mobile/config/color_palette.dart';
 import 'package:voluntariadoing_mobile/config/svg_assets.dart';
+import 'package:voluntariadoing_mobile/donations/cubits/donations_cubit.dart';
 import 'package:voluntariadoing_mobile/donations/models/donation.dart';
+import 'package:voluntariadoing_mobile/donations/providers/donations_api_provider.dart';
 import 'package:voluntariadoing_mobile/donations/views/donation_detail_view.dart';
+import 'package:voluntariadoing_mobile/donations//repositories/donations_repository.dart';
+import 'package:voluntariadoing_mobile/volunteer/models/volunteer.dart';
 
+
+// ignore: must_be_immutable
 class DonationCard extends StatelessWidget {
   final Donation donation;
 
-  DonationCard({@required this.donation});
+  DonationsApiProvider _repository;
+
+  DonationCard({DonationsRepository repository, @required this.donation})
+      : _repository = repository ?? DonationsApiProvider();
 
   @override
+  // ignore: missing_return
   Widget build(BuildContext context) {
-    return SlidableCard(
-      content: _buildContent(context),
-      onPress: () => Navigator.of(context).push(
-        MaterialPageRoute(
-          builder: (_) => DonationDetailView(donation: donation),
+    if (donation.status== DonationStatus.toBeConfirmed) {
+      return SlidableCard(
+        content: _buildContent(context),
+        onPress: () =>
+            Navigator.of(context).push(
+              MaterialPageRoute(
+                builder: (_) => DonationDetailView(donation: donation),
+              ),
+            ),
+        rightGradient: LinearGradient(
+          colors: [ColorPalette.secondaryBlue, ColorPalette.primaryBlue],
+          end: Alignment.topRight,
+          begin: Alignment.bottomLeft,
         ),
-      ),
-      rightGradient: LinearGradient(
-        colors: [ColorPalette.secondaryBlue, ColorPalette.primaryBlue],
-        end: Alignment.topRight,
-        begin: Alignment.bottomLeft,
-      ),
-      rightAction: () {},
-      rightIcon: _buildRightIcon(context),
-      leftGradient: LinearGradient(
-        colors: [ColorPalette.rejected, ColorPalette.red],
-        end: Alignment.topRight,
-        begin: Alignment.bottomLeft,
-      ),
-      leftAction: () {},
-      leftIcon: _buildLeftIcon(context),
-    );
+        rightAction: () {
+          //Pone en to_be_retrieved al estado de la donacion
+          keyToDonationStatus('to_be_retrieved');
+          donation.status = DonationStatus.toBeRetrieved;
+          _repository.updateState(donation) ;
+
+        },
+        rightIcon: _buildRightIcon(context),
+
+        leftGradient: LinearGradient(
+          colors: [ColorPalette.rejected, ColorPalette.red],
+          end: Alignment.topRight,
+          begin: Alignment.bottomLeft,
+        ),
+        leftAction: () {
+          //Pone en rejected al estado de la donacion
+          keyToDonationStatus('rejected');
+          donation.status = DonationStatus.rejected;
+          _repository.updateState(donation) ;
+
+        },
+        leftIcon: _buildLeftIcon(context),
+      );
+    }
+    else if (donation.status == DonationStatus.toBeRetrieved) {
+      return SlidableCard(
+        content: _buildContent(context),
+        onPress: () =>
+            Navigator.of(context).push(
+              MaterialPageRoute(
+                builder: (_) => DonationDetailView(donation: donation),
+              ),
+            ),
+        rightGradient: LinearGradient(
+          colors: [ColorPalette.aqua, ColorPalette.aqua],
+          end: Alignment.topRight,
+          begin: Alignment.bottomLeft,
+        ),
+        rightAction: () {
+          //Pone en retrieved al estado de la donacion
+          keyToDonationStatus('retrieved');
+          donation.status = DonationStatus.retrieved;
+          _repository.updateState(donation) ;
+        },
+        rightIcon: _buildRightIcon(context),
+
+        leftGradient: LinearGradient(
+          colors: [ColorPalette.rejected, ColorPalette.red],
+          end: Alignment.topRight,
+          begin: Alignment.bottomLeft,
+        ),
+        leftAction: () {
+          //Pone en rejected al estado de la donacion
+          keyToDonationStatus('rejected');
+          donation.status = DonationStatus.rejected;
+          _repository.updateState(donation) ;
+        },
+        leftIcon: _buildLeftIcon(context),
+      );
+    }
+    else if (donation.status == DonationStatus.retrieved) {
+      return SlidableCard(
+        content: _buildContent(context),
+        onPress: () =>
+            Navigator.of(context).push(
+              MaterialPageRoute(
+                builder: (_) => DonationDetailView(donation: donation),
+              ),
+            ),
+        rightGradient: LinearGradient(
+          colors: [ColorPalette.grey, ColorPalette.grey],
+          end: Alignment.topRight,
+          begin: Alignment.bottomLeft,
+        ),
+        rightAction: () {
+        },
+        rightIcon: _buildRightIcon(context),
+
+        leftGradient: LinearGradient(
+          colors: [ColorPalette.grey, ColorPalette.grey],
+          end: Alignment.topRight,
+          begin: Alignment.bottomLeft,
+        ),
+        leftAction: () {
+        },
+        leftIcon: _buildLeftIcon(context),
+      );
+    }
+
+    else if (donation.status == DonationStatus.rejected) {
+      return SlidableCard(
+        content: _buildContent(context),
+        onPress: () =>
+            Navigator.of(context).push(
+              MaterialPageRoute(
+                builder: (_) => DonationDetailView(donation: donation),
+              ),
+            ),
+        rightGradient: LinearGradient(
+          colors: [ColorPalette.secondaryBlue, ColorPalette.primaryBlue],
+          end: Alignment.topRight,
+          begin: Alignment.bottomLeft,
+        ),
+        rightAction: () {
+          //Pone en to_be_confirmed al estado de la donacion
+          keyToDonationStatus('to_be_confirmed');
+          donation.status = DonationStatus.toBeRetrieved;
+        },
+        rightIcon: _buildRightIcon(context),
+
+        leftGradient: LinearGradient(
+          colors: [ColorPalette.grey, ColorPalette.grey],
+          end: Alignment.topRight,
+          begin: Alignment.bottomLeft,
+        ),
+        leftAction: () {
+        },
+        leftIcon: _buildLeftIcon(context),
+      );
+    }
+
   }
 
+
   Widget _buildRightIcon(BuildContext ctx) {
-    return ConstrainedBox(
-      constraints: BoxConstraints(
-        maxWidth: 80,
-      ),
-      child: Column(
-        mainAxisSize: MainAxisSize.min,
-        children: [
-          Icon(Icons.alarm, color: Colors.white, size: 30),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Flexible(
-                child: Text(
-                  'Marcar para retirar',
-                  textAlign: TextAlign.center,
-                  style: Theme.of(ctx)
-                      .textTheme
-                      .button
-                      .copyWith(fontFamily: 'Nunito_900', color: Colors.white),
-                ),
-              )
-            ],
-          ),
-        ],
-      ),
-    );
+    if (donation.status == DonationStatus.toBeConfirmed || donation.status == DonationStatus.rejected) {
+      return ConstrainedBox(
+        constraints: BoxConstraints(
+          maxWidth: 80,
+        ),
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            Icon(Icons.alarm, color: Colors.white, size: 30),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Flexible(
+                  child: Text(
+                    'Marcar para retirar',
+                    textAlign: TextAlign.center,
+                    style: Theme
+                        .of(ctx)
+                        .textTheme
+                        .button
+                        .copyWith(
+                        fontFamily: 'Nunito_900', color: Colors.white),
+                  ),
+                )
+              ],
+            ),
+          ],
+        ),
+      );
+    }
+    else if (donation.status == DonationStatus.toBeRetrieved){
+      return ConstrainedBox(
+        constraints: BoxConstraints(
+          maxWidth: 80,
+        ),
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            Icon(Icons.check, color: Colors.white, size: 30),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Flexible(
+                  child: Text(
+                    'Retirada',
+                    textAlign: TextAlign.center,
+                    style: Theme
+                        .of(ctx)
+                        .textTheme
+                        .button
+                        .copyWith(
+                        fontFamily: 'Nunito_900', color: Colors.white),
+                  ),
+                )
+              ],
+            ),
+          ],
+        ),
+      );
+    }
   }
 
   Widget _buildLeftIcon(BuildContext ctx) {
-    return ConstrainedBox(
-      constraints: BoxConstraints(
-        maxWidth: 80,
-      ),
-      child: Column(
-        mainAxisSize: MainAxisSize.min,
-        children: [
-          Icon(Icons.close, color: Colors.white, size: 30),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Flexible(
-                child: Text(
-                  'Rechazar',
-                  textAlign: TextAlign.center,
-                  style: Theme.of(ctx)
-                      .textTheme
-                      .button
-                      .copyWith(fontFamily: 'Nunito_900', color: Colors.white),
-                ),
-              )
-            ],
-          ),
-        ],
-      ),
-    );
+      if (donation.status == DonationStatus.toBeRetrieved || donation.status == DonationStatus.toBeConfirmed){
+      return ConstrainedBox(
+        constraints: BoxConstraints(
+          maxWidth: 80,
+        ),
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            Icon(Icons.close, color: Colors.white, size: 30),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Flexible(
+                  child:
+                  Text(
+                    'Rechazar',
+                    textAlign: TextAlign.center,
+                    style: Theme
+                        .of(ctx)
+                        .textTheme
+                        .button
+                        .copyWith(
+                        fontFamily: 'Nunito_900', color: Colors.white),
+                  ),
+                )
+              ],
+            ),
+          ],
+        ),
+
+      );
+    }
+    // ignore: unrelated_type_equality_checks
+      if (donation.status == DonationStatus.rejected) {
+      return ConstrainedBox(
+        constraints: BoxConstraints(
+          maxWidth: 80,
+        ),
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Flexible(
+                  child:
+                  Text(
+                    ' ',
+                    textAlign: TextAlign.center,
+                    style: Theme
+                        .of(ctx)
+                        .textTheme
+                        .button
+                        .copyWith(
+                        fontFamily: 'Nunito_900', color: Colors.white),
+                  ),
+                )
+              ],
+            ),
+          ],
+        ),
+
+      );
+    }
+
+
   }
 
   Widget _buildContent(BuildContext ctx) {

@@ -22,7 +22,7 @@
                 "0-"
             ],
             "dependencies": []
-        },
+        }
         {
             "id": 2,
             "title": "¿En qué centros de salud puede atenderse?",
@@ -261,5 +261,6 @@
             "options": null,
             "dependencies": [34]
         }
+    ]
     ]
 }

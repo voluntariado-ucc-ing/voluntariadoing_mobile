@@ -12,6 +12,8 @@ import 'package:voluntariadoing_mobile/common/widgets/raised_text_input.dart';
 import 'package:voluntariadoing_mobile/common/widgets/secondary_button.dart';
 import 'package:voluntariadoing_mobile/config/color_palette.dart';
 import 'package:voluntariadoing_mobile/volunteer/utils/volunteer_view_utils.dart';
+import 'package:flutter/foundation.dart';
+
 
 class LoginView extends StatefulWidget {
   @override

@@ -113,7 +113,8 @@ class _DonationDetailViewState extends State<DonationDetailView> {
         _buildStatusImage(),
         Padding(
           padding: const EdgeInsets.only(top: 10),
-          child: _buildStatus(),
+          child: _buildStatus()
+
         ),
         Padding(
           padding: const EdgeInsets.only(top: 30),
@@ -186,6 +187,8 @@ class _DonationDetailViewState extends State<DonationDetailView> {
   }
 
   String _svgAssetFromDonationStatus(DonationStatus donationStatus) {
+    Donation donation;
+
     switch (donationStatus) {
       case DonationStatus.toBeConfirmed:
         return SvgAssets.donationToBeConfirmed;
@@ -324,6 +327,7 @@ class _DonationDetailViewState extends State<DonationDetailView> {
       ],
     );
   }
+
 
   Widget _buildLocation() {
     final direction = widget.donation.direction;

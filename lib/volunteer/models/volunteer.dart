@@ -6,6 +6,7 @@ class Volunteer {
   final String lastName;
   final String username;
   final int documentId;
+  final String password;
   final VolunteerDetails details;
 
   Volunteer({
@@ -14,6 +15,7 @@ class Volunteer {
     this.lastName,
     this.username,
     this.documentId,
+    this.password,
     this.details,
   });
 
@@ -23,6 +25,7 @@ class Volunteer {
     String lastName,
     String username,
     int documentId,
+    String password,
     VolunteerDetails details,
   }) {
     return Volunteer(
@@ -31,6 +34,7 @@ class Volunteer {
       lastName: lastName ?? this.lastName,
       username: username ?? this.username,
       documentId: documentId ?? this.documentId,
+      password: password ?? this.password,
       details: details ?? this.details,
     );
   }
@@ -42,10 +46,17 @@ class Volunteer {
       if (lastName != null) 'last_name': lastName,
       if (username != null) 'username': username,
       if (documentId != null) 'document_id': documentId,
+      if (password != null) 'password' : password,
       if (details != null) 'details': details?.toMap(),
     };
   }
-
+  Map<String, dynamic> toMap2() {
+    return {
+      if (id != null) 'volunteer_id': id,
+      if (username != null) 'username': username,
+      if (password != null) 'password' : password,
+    };
+  }
   factory Volunteer.fromMap(Map<String, dynamic> map) {
     if (map == null) return null;
 
@@ -55,6 +66,7 @@ class Volunteer {
       lastName: map['last_name'],
       username: map['username'],
       documentId: map['document_id'],
+      password: map ['password'],
       details: VolunteerDetails.fromMap(map['details']),
     );
   }
@@ -62,7 +74,7 @@ class Volunteer {
   @override
   String toString() {
     return 'Volunteer(id: $id, firstName: $firstName, lastName: $lastName,'
-        ' username: $username, documentId: $documentId, details: $details)';
+        ' username: $username, documentId: $documentId, password: $password details: $details)';
   }
 
   @override
@@ -75,17 +87,19 @@ class Volunteer {
         o.lastName == lastName &&
         o.username == username &&
         o.documentId == documentId &&
+        o.password == password &&
         o.details == details;
   }
 
   @override
   int get hashCode {
     return id.hashCode ^
-        firstName.hashCode ^
-        lastName.hashCode ^
-        username.hashCode ^
-        documentId.hashCode ^
-        details.hashCode;
+    firstName.hashCode ^
+    lastName.hashCode ^
+    username.hashCode ^
+    documentId.hashCode ^
+    password.hashCode ^
+    details.hashCode;
   }
 }
 
@@ -206,15 +220,15 @@ class VolunteerDetails {
   @override
   int get hashCode {
     return contactEmail.hashCode ^
-        phoneNumber.hashCode ^
-        photoUrl.hashCode ^
-        birthDate.hashCode ^
-        hasCar.hashCode ^
-        university.hashCode ^
-        career.hashCode ^
-        careerYear.hashCode ^
-        careerCondition.hashCode ^
-        works.hashCode ^
-        direction.hashCode;
+    phoneNumber.hashCode ^
+    photoUrl.hashCode ^
+    birthDate.hashCode ^
+    hasCar.hashCode ^
+    university.hashCode ^
+    career.hashCode ^
+    careerYear.hashCode ^
+    careerCondition.hashCode ^
+    works.hashCode ^
+    direction.hashCode;
   }
 }

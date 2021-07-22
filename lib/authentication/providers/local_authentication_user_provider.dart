@@ -13,9 +13,8 @@ class LocalAuthenticationUserProvider {
       : _preferences = preferences ?? SharedPreferences.getInstance();
 
   FutureOr<AuthenticationUser> getAuthenticationUser() async {
-    final prefsString = (await _preferences).getString(
-      Config.authenticationUserSharedPreferencesKey,
-    );
+    final prefsString = (await _preferences).getString(Config.authenticationUserSharedPreferencesKey);
+   // print(prefsString);
     if (prefsString != null) {
       final prefsJson = json.decode(prefsString);
       final authenticationUser = AuthenticationUser.fromMap(prefsJson);

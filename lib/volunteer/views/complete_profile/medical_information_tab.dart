@@ -7,6 +7,9 @@ import 'package:voluntariadoing_mobile/volunteer/providers/medical_information_p
 import 'package:voluntariadoing_mobile/volunteer/widgets/medical_info_item_entry.dart';
 import 'package:voluntariadoing_mobile/common/widgets/no_overscroll_behavior.dart';
 import 'package:voluntariadoing_mobile/common/widgets/section_title.dart';
+import 'package:flutter/foundation.dart';
+
+
 
 class MedicalInformationTab extends StatefulWidget {
   final MedicalInformationProvider provider;

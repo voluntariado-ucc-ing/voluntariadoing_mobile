@@ -4,8 +4,9 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:voluntariadoing_mobile/donations/cubits/donations_cubit.dart';
 import 'package:voluntariadoing_mobile/donations/models/donation.dart';
 import 'package:voluntariadoing_mobile/donations/widgets/donation_card.dart';
-
 class DonationsList extends StatelessWidget {
+
+
   @override
   Widget build(BuildContext context) => _buildList();
 
@@ -28,6 +29,7 @@ class DonationsList extends StatelessWidget {
   Widget _buildDonation(Donation donation) {
     return Padding(
       padding: const EdgeInsets.only(bottom: 10),
+
       child: DonationCard(donation: donation),
     );
   }

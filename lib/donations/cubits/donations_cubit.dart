@@ -10,11 +10,25 @@ part 'donations_state.dart';
 class DonationsCubit extends Cubit<DonationsState> {
   DonationsRepository _repository;
 
+
   DonationsCubit({DonationsRepository repository})
       : _repository = repository ?? DonationsRepository(),
         super(DonationsInitial());
 
+  Donation get donation => this.donation;
+
   void getDonations() async {
+    try {
+      emit(DonationsLoading());
+      final donations = await _repository.list();
+      //donations.sort((a,b) => a.date.compareTo(b.date));
+      emit(DonationsSuccess(donations));
+    } on ApiException catch (error) {
+      emit(DonationsFailure(error));
+    }
+  }
+
+  void changeDonation() async {
     try {
       emit(DonationsLoading());
       final donations = await _repository.list();
@@ -22,5 +36,10 @@ class DonationsCubit extends Cubit<DonationsState> {
     } on ApiException catch (error) {
       emit(DonationsFailure(error));
     }
+
+  }
+
+  Future<void> newStatus() async {
+    //await _repository.updateState(donation);
   }
 }

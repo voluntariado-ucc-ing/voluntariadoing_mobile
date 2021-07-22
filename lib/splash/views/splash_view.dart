@@ -4,8 +4,10 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:voluntariadoing_mobile/authentication/cubits/authentication_cubit.dart';
 import 'package:voluntariadoing_mobile/common/mixins/navigator_mixin.dart';
 import 'package:voluntariadoing_mobile/common/widgets/presentation_logo.dart';
+import 'package:voluntariadoing_mobile/donations/views/donations_view.dart';
 import 'package:voluntariadoing_mobile/volunteer/utils/volunteer_view_utils.dart';
 import 'package:voluntariadoing_mobile/volunteer/views/login_view.dart';
+
 
 class SplashView extends StatelessWidget with NavigatorMixin {
   Widget _buildCredentialsNotFoundView() => LoginView();

@@ -20,6 +20,7 @@ dependencies:
   shared_preferences: ^0.5.10
   bloc: ^6.0.3
   flutter_bloc: ^6.0.5
+  material_floating_search_bar: ^0.2.2
 
 dependency_overrides:
   image: ^2.1.14

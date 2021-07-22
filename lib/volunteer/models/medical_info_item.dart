@@ -22,6 +22,36 @@ class MedicalInfoItem {
     };
   }
 
+
+  factory MedicalInfoItem.fromJson(Map<String, dynamic> parsedJson){
+
+    if (parsedJson == null) return null;
+
+    MedicalInfoItemType _parseType(String type) {
+      switch (type) {
+        case 'SWITCH':
+          return MedicalInfoItemType.SWITCH;
+        case 'SELECT':
+          return MedicalInfoItemType.SELECT;
+        case 'TEXT':
+          return MedicalInfoItemType.TEXT;
+        default:
+          return null;
+      }
+    }
+
+
+
+    final type = _parseType(parsedJson['type']);
+
+    return MedicalInfoItem(
+        id: parsedJson['id'],
+        title: parsedJson['title'],
+        options: parsedJson['options'] != null ? List<String>.from(parsedJson['options']) : null,
+        type: type
+    );
+  }
+
   factory MedicalInfoItem.fromMap(Map<String, dynamic> map) {
     if (map == null) return null;
 
@@ -37,6 +67,8 @@ class MedicalInfoItem {
           return null;
       }
     }
+
+
 
     final type = _parseType(map['type']);
   

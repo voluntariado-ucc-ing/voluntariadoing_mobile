@@ -67,10 +67,10 @@ class _DonationsViewState extends State<DonationsView> {
             child: Column(
               children: [
                 _buildHeader(),
-                Padding(
+                /* Padding(
                   padding: const EdgeInsets.only(top: 10),
                   child: _buildSearchBar(),
-                ),
+                ),*/
                 Padding(
                   padding: const EdgeInsets.only(top: 15),
                   child: _buildStatus(),
@@ -102,7 +102,7 @@ class _DonationsViewState extends State<DonationsView> {
             ),
           ),
         ),
-        _buildActions()
+        //_buildActions()
       ],
     );
   }
@@ -147,36 +147,10 @@ class _DonationsViewState extends State<DonationsView> {
     );
   }
 
-  Widget _buildActions() {
-    return Row(
-      mainAxisSize: MainAxisSize.min,
-      children: [
-        Flexible(
-          child: InkWell(
-            onTap: () {},
-            borderRadius: WidgetUtils.borderRadius10,
-            splashColor: ColorPalette.lightGrey,
-            child: Icon(
-              Icons.filter_list,
-              color: ColorPalette.darkerGrey,
-              size: 28,
-            ),
-          ),
-        )
-      ],
-    );
-  }
-
-  Widget _buildSearchBar() {
-    return RaisedTextInput(
-      hintText: 'COMMON.SEARCH_HINT'.tr(),
-      icon: Icons.search,
-    );
-  }
 
   Widget _buildStatus() {
     final statusKeyList =
-        DonationStatus.values.map(donationStatusToKey).toList();
+    DonationStatus.values.map(donationStatusToKey).toList();
     final statusLabels = statusKeyList
         .map((key) => 'DONATIONS.${key.toUpperCase()}'.tr())
         .toList();

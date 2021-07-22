@@ -31,7 +31,7 @@ class NavigationDrawer extends StatelessWidget {
                       selected: true),
                   NavigationDrawerItem(
                     icon: Icons.settings,
-                    title: 'COMMON.SETTINGS'.tr(),
+                    title: 'COMMON.EDIT_PROFILE'.tr(),
                   ),
                   Spacer(),
                   PresentationLogo(showImage: false, mini: true),
